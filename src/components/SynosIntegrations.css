@@ -1,0 +1,57 @@
+.synos-integrations {
+  padding: 60px 0;
+  background: white;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.synos-integrations-label {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.synos-logo-track {
+  width: 100%;
+  position: relative;
+  display: flex;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.synos-logo-scroll {
+  display: flex;
+  gap: 60px;
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.synos-integration-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.synos-integration-logo:hover {
+  color: black;
+}
+
+.synos-integrations-action {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.synos-link-more {
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+}

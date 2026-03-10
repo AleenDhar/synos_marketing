@@ -1,0 +1,68 @@
+.synos-how-it-works {
+  padding: 100px 0;
+  background: white;
+}
+
+.synos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.synos-section-label {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 64px;
+  text-align: center;
+  letter-spacing: 0.15em;
+}
+
+.synos-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-bottom: 80px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.synos-step-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.synos-step-number {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.synos-step-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.synos-step-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  max-width: 300px;
+}
+
+.synos-section-action {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .synos-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

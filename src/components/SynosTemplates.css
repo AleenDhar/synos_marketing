@@ -1,0 +1,70 @@
+.synos-templates {
+  padding: 100px 0;
+  background: white;
+}
+
+.synos-templates-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.synos-templates-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.synos-templates-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.synos-templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.synos-template-card {
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.synos-template-card:hover {
+  border-color: black;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+
+.synos-template-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.synos-template-card-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.synos-template-btn {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.synos-templates-footer {
+  text-align: center;
+}

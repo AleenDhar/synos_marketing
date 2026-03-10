@@ -1,0 +1,51 @@
+.synos-chat-preview {
+  padding: 100px 0;
+  background: white;
+}
+
+.synos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.synos-chat-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.synos-chat-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+
+.synos-chat-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.synos-chat-visual {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.2);
+  border: 1px solid var(--border);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.synos-chat-visual:hover {
+  transform: translateY(-10px);
+}
+
+.synos-chat-img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .synos-chat-title {
+    font-size: 32px;
+  }
+}

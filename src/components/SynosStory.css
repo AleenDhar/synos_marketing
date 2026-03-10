@@ -1,0 +1,83 @@
+.synos-story {
+  padding: 120px 0;
+  background: #000;
+  color: white;
+}
+
+.synos-story-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: center;
+}
+
+.synos-story-quote {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 32px;
+  letter-spacing: -0.03em;
+}
+
+.synos-story-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.synos-story-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.synos-story .synos-btn-primary {
+  background: white;
+  color: black;
+}
+
+.synos-story .synos-btn-secondary {
+  border-color: #444;
+  background: transparent;
+  color: white;
+}
+
+.synos-founder-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: #222;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.synos-avatar-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: white;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 992px) {
+  .synos-story-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .synos-story-visual {
+    order: -1;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .synos-story-quote {
+    font-size: 32px;
+  }
+}

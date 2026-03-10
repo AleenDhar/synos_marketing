@@ -1,59 +1,97 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+'use client';
 
-import config from '@/payload.config'
-import './styles.css'
+import React from 'react';
+import { SynosNavbar } from '@/components/SynosNavbar';
+import { SynosHero } from '@/components/SynosHero';
+import { SynosFounderBanner } from '@/components/SynosFounderBanner';
+import { SynosHowItWorks } from '@/components/SynosHowItWorks';
+import { SynosChatPreview } from '@/components/SynosChatPreview';
+import { SynosFeatureGrid } from '@/components/SynosFeatureGrid';
+import { SynosIntegrations } from '@/components/SynosIntegrations';
+import { SynosTemplates } from '@/components/SynosTemplates';
+import { SynosStory } from '@/components/SynosStory';
+import { SynosDeploy } from '@/components/SynosDeploy';
+import { SynosFooter } from '@/components/SynosFooter';
 
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
+export default function LandingPage() {
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
+    <div className="synos-landing">
+      <SynosNavbar />
+      <main>
+        <SynosHero />
+        <SynosFounderBanner />
+        <SynosHowItWorks />
+        <SynosChatPreview />
+        <SynosFeatureGrid />
+        <SynosIntegrations />
+        <SynosTemplates />
+        <SynosStory />
+        <SynosDeploy />
+      </main>
+      <SynosFooter />
+      
+      <style jsx global>{`
+        :root {
+          --text-primary: #000;
+          --text-secondary: #666;
+          --border: #f0f0f0;
+        }
+        
+        * {
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+        }
+        
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          color: var(--text-primary);
+        }
+
+        .synos-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+
+        .synos-btn-primary {
+          background: black;
+          color: white;
+          padding: 14px 28px;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 700;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s;
+        }
+
+        .synos-btn-primary:hover {
+          transform: translateY(-1px);
+        }
+
+        .synos-btn-secondary {
+          border: 1.5px solid var(--border);
+          padding: 14px 28px;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 700;
+          background: white;
+          cursor: pointer;
+          transition: border-color 0.2s;
+        }
+
+        .synos-btn-secondary:hover {
+          border-color: black;
+        }
+
+        @media (max-width: 768px) {
+          .synos-container {
+            padding: 0 20px;
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
 }

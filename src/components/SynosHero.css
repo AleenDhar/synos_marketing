@@ -1,0 +1,74 @@
+.synos-hero {
+  padding: 100px 0 60px;
+  text-align: center;
+  background: white;
+}
+
+.synos-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.synos-hero-title {
+  font-size: 72px;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.04em;
+}
+
+.synos-hero-description {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.synos-hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.synos-btn-primary {
+  background: black;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.synos-btn-secondary {
+  border: 1.5px solid var(--border);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  background: white;
+}
+
+.synos-hero-founder-meta {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .synos-hero-title {
+    font-size: 48px;
+  }
+  .synos-hero-description {
+    font-size: 18px;
+  }
+  .synos-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .synos-btn-primary, .synos-btn-secondary {
+    width: 100%;
+    max-width: 320px;
+  }
+}

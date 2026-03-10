@@ -1,0 +1,73 @@
+.synos-deploy {
+  padding: 100px 0;
+  background: #f9f9fb;
+}
+
+.synos-deploy-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.synos-deploy-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.synos-deploy-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.synos-platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.synos-platform-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform 0.2s;
+}
+
+.synos-platform-card:hover {
+  transform: translateY(-5px);
+}
+
+.synos-platform-icon-placeholder {
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #333;
+}
+
+.synos-platform-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.synos-platform-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .synos-platforms-grid {
+    grid-template-columns: 1fr;
+  }
+}

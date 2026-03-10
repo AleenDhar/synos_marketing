@@ -1,0 +1,53 @@
+.synos-feature-grid {
+  padding: 100px 0;
+  background: #f9f9fb;
+}
+
+.synos-feature-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.synos-feature-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.synos-feature-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.synos-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 48px;
+}
+
+.synos-feature-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.synos-feature-item-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: black;
+}
+
+.synos-feature-item-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .synos-features {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

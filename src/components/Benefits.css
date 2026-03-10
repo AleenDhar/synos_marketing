@@ -1,0 +1,123 @@
+.benefits {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.benefit-card {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.benefit-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.benefit-visual-container {
+  margin-top: auto;
+  height: 200px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.b1 .buffer-card, .b2 .link-card {
+  padding: 16px;
+  font-size: 12px;
+}
+
+.link-badge {
+  background: var(--bg-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.notif-pill {
+  background: #333;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.feature-grid-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.micro-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.micro-feature {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.micro-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.mf-icon {
+  font-size: 24px;
+}
+
+.mf-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  .micro-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .micro-features-grid {
+    grid-template-columns: 1fr;
+  }
+}

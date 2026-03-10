@@ -1,0 +1,80 @@
+.synos-navbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.synos-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.synos-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.synos-logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.synos-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+.synos-nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.synos-nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.synos-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.synos-login-link {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.synos-btn-get-started {
+  background: black;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.synos-btn-get-started:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .synos-nav-links {
+    display: none;
+  }
+}
