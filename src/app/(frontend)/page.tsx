@@ -27,7 +27,7 @@ export default function LandingPage() {
         <SynosTemplates />
         <SynosEnterprise />
         <SynosDeploy />
-        <SynosSocialProof />
+        {/* <SynosSocialProof /> */}
         <SynosFinalCTA />
       </main>
       <SynosFooter />
