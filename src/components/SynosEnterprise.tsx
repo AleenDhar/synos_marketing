@@ -15,7 +15,7 @@ export const SynosEnterprise: React.FC = () => {
     <section className="synos-enterprise" id="enterprise">
       <div className="synos-container">
         <div className="synos-enterprise-header">
-          <h2 className="synos-enterprise-title">Built for teams that don't compromise on security.</h2>
+          <h2 className="synos-enterprise-title">Built for teams that don&apos;t compromise on security.</h2>
           <p className="synos-enterprise-subtitle">SynosAI is enterprise-ready out of the box. Deploy across your organization with the controls your security and compliance teams require.</p>
         </div>
         <div className="synos-enterprise-grid">

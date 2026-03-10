@@ -1,7 +1,7 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
-  await db.execute(sql`
+export async function up(args: MigrateUpArgs): Promise<void> {
+  await args.db.execute(sql`
    CREATE TABLE "users_sessions" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -119,8 +119,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
-  await db.execute(sql`
+export async function down(args: MigrateDownArgs): Promise<void> {
+  await args.db.execute(sql`
    DROP TABLE "users_sessions" CASCADE;
   DROP TABLE "users" CASCADE;
   DROP TABLE "media" CASCADE;

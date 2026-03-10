@@ -1,4 +1,5 @@
 import React from 'react';
+import NextImage from 'next/image';
 import './SynosDeploy.css';
 
 export const SynosDeploy: React.FC = () => {
@@ -38,7 +39,7 @@ export const SynosDeploy: React.FC = () => {
           {platforms.map((p, i) => (
             <div key={i} className="synos-platform-card">
               <div className="synos-platform-icon">
-                <img src={p.icon} alt={p.name} />
+                <NextImage src={p.icon} alt={p.name} width={40} height={40} />
               </div>
               <h3 className="synos-platform-name">{p.name}</h3>
               <p className="synos-platform-desc">{p.desc}</p>

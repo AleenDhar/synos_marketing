@@ -1,4 +1,5 @@
 import React from 'react';
+import NextImage from 'next/image';
 import './SynosIntegrations.css';
 
 const INTEGRATIONS_ROW_1 = [
@@ -41,7 +42,7 @@ export const SynosIntegrations: React.FC = () => {
             <div className="synos-logo-scroll">
               {INTEGRATIONS_ROW_1.concat(INTEGRATIONS_ROW_1).map((item, index) => (
                 <div key={index} className="synos-integration-item">
-                  <img src={item.icon} alt={item.name} className="synos-integration-icon" />
+                  <NextImage src={item.icon} alt={item.name} className="synos-integration-icon" width={32} height={32} />
                   <span className="synos-integration-name">{item.name}</span>
                 </div>
               ))}
@@ -52,7 +53,7 @@ export const SynosIntegrations: React.FC = () => {
             <div className="synos-logo-scroll">
               {INTEGRATIONS_ROW_2.concat(INTEGRATIONS_ROW_2).map((item, index) => (
                 <div key={index} className="synos-integration-item">
-                  <img src={item.icon} alt={item.name} className="synos-integration-icon" />
+                  <NextImage src={item.icon} alt={item.name} className="synos-integration-icon" width={32} height={32} />
                   <span className="synos-integration-name">{item.name}</span>
                 </div>
               ))}

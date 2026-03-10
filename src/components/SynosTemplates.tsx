@@ -18,7 +18,7 @@ export const SynosTemplates: React.FC = () => {
       <div className="synos-container">
         <div className="synos-templates-header">
           <h2 className="synos-templates-title">Start in 60 seconds. Customize forever.</h2>
-          <p className="synos-templates-subtitle">Pre-built agent templates for the workflows that eat your team's time. Pick one. Tweak it. Deploy it.</p>
+          <p className="synos-templates-subtitle">Pre-built agent templates for the workflows that eat your team&apos;s time. Pick one. Tweak it. Deploy it.</p>
         </div>
         <div className="synos-templates-grid">
           {templates.map((template, index) => (

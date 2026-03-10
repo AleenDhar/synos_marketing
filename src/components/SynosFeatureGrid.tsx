@@ -33,7 +33,7 @@ export const SynosFeatureGrid: React.FC = () => {
     },
     {
       title: 'Zero Code Required',
-      description: "If you can describe what you want, you can build an agent. That's the bar. No developers. No consultants. No 6-month implementation."
+      description: "If you can describe what you want, you can build an agent. That&apos;s the bar. No developers. No consultants. No 6-month implementation."
     }
   ];
 

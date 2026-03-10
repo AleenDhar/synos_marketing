@@ -1,4 +1,4 @@
-import React from 'react';
+import NextImage from 'next/image';
 import './AppointmentWidget.css';
 
 export const AppointmentWidget: React.FC = () => {
@@ -7,7 +7,7 @@ export const AppointmentWidget: React.FC = () => {
       <div className="widget-header">
         <div className="doctor-info">
           <div className="doctor-avatar">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71f153678c?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr. Sarah Smith" />
+            <NextImage src="https://images.unsplash.com/photo-1559839734-2b71f153678c?auto=format&fit=crop&q=80&w=200&h=200" alt="Dr. Sarah Smith" width={200} height={200} />
           </div>
           <div className="doctor-details">
             <span className="doctor-name">Dr. Sarah Smith</span>

@@ -35,7 +35,7 @@ export const SynosSocialProof: React.FC = () => {
         <div className="synos-testimonials">
           {testimonials.map((t, i) => (
             <blockquote key={i} className="synos-testimonial-item">
-              <p className="synos-testimonial-quote">"{t.quote}"</p>
+              <p className="synos-testimonial-quote">&quot;{t.quote}&quot;</p>
               <footer className="synos-testimonial-author">— <strong>{t.author}</strong>, {t.company}</footer>
             </blockquote>
           ))}

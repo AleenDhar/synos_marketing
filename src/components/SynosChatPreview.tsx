@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import NextImage from 'next/image';
 import './SynosChatPreview.css';
 
 const slides = [
@@ -53,10 +54,12 @@ export const SynosChatPreview: React.FC = () => {
               key={index} 
               className={`synos-chat-visual ${activeSlide === index ? 'active' : ''}`}
             >
-              <img 
+              <NextImage 
                 src={slide.image} 
                 alt={slide.title} 
                 className="synos-chat-img"
+                fill
+                priority={index === 0}
               />
             </div>
           ))}
