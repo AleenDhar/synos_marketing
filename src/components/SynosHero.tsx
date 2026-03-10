@@ -6,20 +6,18 @@ export const SynosHero: React.FC = () => {
     <section className="synos-hero">
       <div className="synos-hero-content">
         <h1 className="synos-hero-title">
-          Employees that never get tired.
+          AI agents that work. For real.
         </h1>
         <p className="synos-hero-description">
-          Build AI agents in minutes. Connect 300+ apps. <br />
-          Deploy them on Slack, Telegram, Teams & Discord. <br />
-          No code. No technical skills. Just results.
+          Build AI agents in minutes. Connect 900+ apps. Deploy them on Slack, Teams, Telegram & Discord. No code required.
         </p>
         <div className="synos-hero-actions">
           <button className="synos-btn-primary">Get Started Free</button>
-          <button className="synos-btn-secondary">Watch the Story <span>→</span></button>
+          <button className="synos-btn-secondary">Book a Demo</button>
         </div>
-        <p className="synos-hero-founder-meta">
-          Built and run by one founder. Using only SynosAI.
-        </p>
+        <div className="synos-hero-proof">
+          <p>900+ integrations · 5 deployment channels · Setup in under 60 seconds</p>
+        </div>
       </div>
     </section>
   );

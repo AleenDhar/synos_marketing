@@ -3,14 +3,15 @@
 import React from 'react';
 import { SynosNavbar } from '@/components/SynosNavbar';
 import { SynosHero } from '@/components/SynosHero';
-import { SynosFounderBanner } from '@/components/SynosFounderBanner';
 import { SynosHowItWorks } from '@/components/SynosHowItWorks';
 import { SynosChatPreview } from '@/components/SynosChatPreview';
 import { SynosFeatureGrid } from '@/components/SynosFeatureGrid';
 import { SynosIntegrations } from '@/components/SynosIntegrations';
 import { SynosTemplates } from '@/components/SynosTemplates';
-import { SynosStory } from '@/components/SynosStory';
+import { SynosEnterprise } from '@/components/SynosEnterprise';
 import { SynosDeploy } from '@/components/SynosDeploy';
+import { SynosSocialProof } from '@/components/SynosSocialProof';
+import { SynosFinalCTA } from '@/components/SynosFinalCTA';
 import { SynosFooter } from '@/components/SynosFooter';
 
 export default function LandingPage() {
@@ -19,14 +20,15 @@ export default function LandingPage() {
       <SynosNavbar />
       <main>
         <SynosHero />
-        <SynosFounderBanner />
         <SynosHowItWorks />
         <SynosChatPreview />
         <SynosFeatureGrid />
         <SynosIntegrations />
         <SynosTemplates />
-        <SynosStory />
+        <SynosEnterprise />
         <SynosDeploy />
+        {/* <SynosSocialProof /> */}
+        <SynosFinalCTA />
       </main>
       <SynosFooter />
       
@@ -68,7 +70,8 @@ export default function LandingPage() {
         }
 
         .synos-btn-primary:hover {
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .synos-btn-secondary {
@@ -79,11 +82,12 @@ export default function LandingPage() {
           font-weight: 700;
           background: white;
           cursor: pointer;
-          transition: border-color 0.2s;
+          transition: all 0.2s;
         }
 
         .synos-btn-secondary:hover {
           border-color: black;
+          background: #f9f9f9;
         }
 
         @media (max-width: 768px) {

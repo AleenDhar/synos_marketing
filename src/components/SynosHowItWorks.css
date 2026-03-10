@@ -1,22 +1,14 @@
 .synos-how-it-works {
-  padding: 100px 0;
+  padding: 120px 0;
   background: white;
 }
 
-.synos-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.synos-section-label {
-  font-size: 13px;
+.synos-section-title {
+  font-size: 48px;
   font-weight: 800;
-  text-transform: uppercase;
-  color: #888;
-  margin-bottom: 64px;
   text-align: center;
-  letter-spacing: 0.15em;
+  margin-bottom: 80px;
+  letter-spacing: -0.03em;
 }
 
 .synos-steps-grid {
@@ -24,9 +16,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 60px;
   margin-bottom: 80px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .synos-step-card {
@@ -35,14 +24,15 @@
 }
 
 .synos-step-number {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   margin-bottom: 12px;
-  color: #000;
+  color: #888;
+  text-transform: uppercase;
 }
 
 .synos-step-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   margin-bottom: 16px;
   letter-spacing: -0.03em;
@@ -52,8 +42,7 @@
 .synos-step-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #666;
-  max-width: 300px;
+  color: var(--text-secondary);
 }
 
 .synos-section-action {
@@ -61,6 +50,9 @@
 }
 
 @media (max-width: 768px) {
+  .synos-section-title {
+    font-size: 36px;
+  }
   .synos-steps-grid {
     grid-template-columns: 1fr;
     gap: 48px;

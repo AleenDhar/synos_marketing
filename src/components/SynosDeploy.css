@@ -33,25 +33,33 @@
   border-radius: 16px;
   text-align: center;
   border: 1px solid var(--border);
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
 }
 
 .synos-platform-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border-color: #ddd;
 }
 
-.synos-platform-icon-placeholder {
-  width: 60px;
-  height: 60px;
-  background: #eee;
-  border-radius: 12px;
+.synos-platform-icon {
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
-  font-size: 24px;
-  font-weight: 800;
-  color: #333;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.synos-platform-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .synos-platform-name {
@@ -69,5 +77,8 @@
 @media (max-width: 768px) {
   .synos-platforms-grid {
     grid-template-columns: 1fr;
+  }
+  .synos-deploy-title {
+    font-size: 32px;
   }
 }

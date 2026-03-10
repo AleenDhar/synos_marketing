@@ -4,32 +4,36 @@ import './SynosFeatureGrid.css';
 export const SynosFeatureGrid: React.FC = () => {
   const features = [
     {
-      title: 'Natural language instructions',
-      description: 'Tell your agent what to do in plain English. It figures out the rest.'
+      title: 'Natural Language Instructions',
+      description: 'Tell your agent what to do in plain English. It interprets, plans, and executes. No syntax. No configuration files. No training required.'
     },
     {
-      title: '300+ app integrations',
-      description: 'Connect every tool your business runs on. Not toy integrations — real, working connections.'
+      title: '900+ Integrations',
+      description: 'Connect every tool your business runs on. CRMs, ERPs, databases, communication tools, payment systems, dev tools, cloud storage — real integrations, not toy connectors.'
     },
     {
-      title: 'Workflow builder',
-      description: 'Build multi-step workflows visually. Set cron schedules. Trigger on events.'
+      title: 'Visual Workflow Builder',
+      description: 'Build multi-step workflows with a drag-and-drop builder. Add conditions, loops, API calls, and human-in-the-loop checkpoints. Set cron schedules. Trigger on webhooks.'
     },
     {
-      title: 'Multi-channel deployment',
-      description: 'Deploy agents to Slack, Telegram, Microsoft Teams, and Discord.'
+      title: 'Multi-Channel Deployment',
+      description: 'Deploy agents to Slack, Microsoft Teams, Telegram, and Discord. Your agents live where your team already works — not in another tab.'
     },
     {
-      title: 'Scheduling & cron jobs',
-      description: 'Agents run on your schedule — daily reports, weekly cleanups, hourly checks. Autopilot.'
+      title: 'Scheduling & Automation',
+      description: 'Daily reports. Weekly digests. Hourly monitoring. Event-triggered workflows. Your agents run on your schedule, 24/7/365.'
     },
     {
-      title: 'Knowledge & context',
-      description: 'Give agents access to your docs, data, and SOPs. They learn your business.'
+      title: 'Knowledge & Context',
+      description: 'Upload documents, SOPs, product specs, and internal data. Your agents learn your business and respond with context — not generic answers.'
     },
     {
-      title: 'Zero code required',
-      description: 'If you can describe what you want, you can build an agent. Period.'
+      title: 'Enterprise-Grade Security',
+      description: 'SOC 2 compliant. SSO/SAML. Role-based access control. Audit logs. Data encryption at rest and in transit. Your compliance team will approve this.'
+    },
+    {
+      title: 'Zero Code Required',
+      description: "If you can describe what you want, you can build an agent. That's the bar. No developers. No consultants. No 6-month implementation."
     }
   ];
 
@@ -37,8 +41,7 @@ export const SynosFeatureGrid: React.FC = () => {
     <section className="synos-feature-grid">
       <div className="synos-container">
         <div className="synos-feature-header">
-          <h2 className="synos-feature-title">Everything a great employee does.</h2>
-          <p className="synos-feature-subtitle">Nothing a great employee complains about.</p>
+          <h2 className="synos-feature-title">Everything you need. Nothing you don't.</h2>
         </div>
         <div className="synos-features">
           {features.map((feature, index) => (

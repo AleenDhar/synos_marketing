@@ -7,6 +7,21 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Templates } from './collections/Templates'
+import { Integrations } from './collections/Integrations'
+import { Categories } from './collections/Categories'
+import { Tags } from './collections/Tags'
+import { Testimonials } from './collections/Testimonials'
+import { CaseStudies } from './collections/CaseStudies'
+import { Changelog } from './collections/Changelog'
+import { Faqs } from './collections/Faqs'
+
+import { Header } from './globals/Header'
+import { Footer } from './globals/Footer'
+import { SiteSettings } from './globals/SiteSettings'
+import { Scripts } from './globals/Scripts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,7 +33,21 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [
+    Pages,
+    Posts,
+    Templates,
+    Integrations,
+    Categories,
+    Tags,
+    Testimonials,
+    CaseStudies,
+    Changelog,
+    Faqs,
+    Media,
+    Users,
+  ],
+  globals: [Header, Footer, SiteSettings, Scripts],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
