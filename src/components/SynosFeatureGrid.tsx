@@ -41,7 +41,7 @@ export const SynosFeatureGrid: React.FC = () => {
     <section className="synos-feature-grid">
       <div className="synos-container">
         <div className="synos-feature-header">
-          <h2 className="synos-feature-title">Everything you need. Nothing you don't.</h2>
+          <h2 className="synos-feature-title">Everything you need. Nothing you don&apos;t.</h2>
         </div>
         <div className="synos-features">
           {features.map((feature, index) => (
