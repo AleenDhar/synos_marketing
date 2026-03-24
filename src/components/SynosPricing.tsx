@@ -67,7 +67,7 @@ export const SynosPricing: React.FC<SynosPricingProps> = ({ onWaitlistClick }) =
           <span className="synos-pricing-coming-soon">Coming Soon</span>
           <p className="synos-pricing-subtitle">No credit card required. Upgrade when you&apos;re ready.</p>
         </div>
-        <div className="synos-pricing-grid">
+        {/* <div className="synos-pricing-grid">
           {plans.map((plan, i) => (
             <div key={i} className={`synos-pricing-card ${plan.highlighted ? 'synos-pricing-highlighted' : ''}`}>
               {plan.highlighted && <div className="synos-pricing-badge">Most Popular</div>}
@@ -90,7 +90,7 @@ export const SynosPricing: React.FC<SynosPricingProps> = ({ onWaitlistClick }) =
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
