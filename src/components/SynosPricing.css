@@ -16,6 +16,20 @@
   color: var(--text-primary);
 }
 
+.synos-pricing-coming-soon {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
 .synos-pricing-subtitle {
   font-size: 18px;
   color: var(--text-secondary);
