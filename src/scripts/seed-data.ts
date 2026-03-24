@@ -101,6 +101,7 @@ async function seed() {
           data: fs.readFileSync(filePath),
           name: fileName,
           mimetype: ext === '.svg' ? 'image/svg+xml' : 'image/png',
+          size: fs.statSync(filePath).size,
         },
       })
 
