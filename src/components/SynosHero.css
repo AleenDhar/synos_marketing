@@ -1,0 +1,146 @@
+.synos-hero {
+  padding: 60px 0 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.synos-hero-split {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 24px;
+}
+
+.synos-hero-content {
+  flex: 1;
+  text-align: left;
+}
+
+.synos-hero-robot {
+  flex: 1;
+  height: 500px;
+  position: relative;
+}
+
+.synos-hero-title {
+  font-size: 64px;
+  line-height: 1.08;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.synos-hero-description {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.synos-hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.synos-hero-integrations {
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.synos-hero-integrations-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.synos-logo-track-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 60px;
+}
+
+.synos-logo-track {
+  width: 100%;
+  position: relative;
+  display: flex;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.synos-logo-scroll {
+  display: flex;
+  gap: 80px;
+  animation: scroll 60s linear infinite;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.synos-logo-track.reverse .synos-logo-scroll {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.synos-integration-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.synos-integration-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.synos-integration-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.synos-integration-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .synos-hero-split {
+    flex-direction: column;
+    text-align: center;
+  }
+  .synos-hero-content {
+    text-align: center;
+  }
+  .synos-hero-title {
+    font-size: 42px;
+  }
+  .synos-hero-description {
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .synos-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .synos-hero-robot {
+    width: 100%;
+    height: 400px;
+  }
+}

@@ -1,0 +1,128 @@
+.synos-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 26, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.synos-modal {
+  background: var(--bg);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+}
+
+.synos-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+.synos-modal-close:hover {
+  color: var(--text-primary);
+}
+
+.synos-modal-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.synos-modal-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.synos-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.synos-modal-input {
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+.synos-modal-input:focus {
+  border-color: var(--accent);
+}
+
+.synos-modal-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.synos-modal-textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.synos-modal-submit {
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.synos-modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.synos-modal-error {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.synos-modal-success {
+  text-align: center;
+}
+
+.synos-modal-success .synos-modal-title {
+  margin-bottom: 12px;
+}
+
+.synos-modal-success .synos-modal-desc {
+  margin-bottom: 32px;
+}
+
+.synos-modal-success .synos-btn-primary {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .synos-modal {
+    padding: 32px 24px;
+  }
+  .synos-modal-title {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,77 @@
+.synos-templates {
+  padding: 100px 0;
+  background: var(--bg);
+}
+
+.synos-templates-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.synos-templates-title {
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.synos-templates-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.synos-templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.synos-template-card {
+  background: var(--bg-card);
+  padding: 32px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.synos-template-card:hover {
+  transform: translateY(-4px);
+}
+
+.synos-template-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.synos-template-card-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.synos-template-btn {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+.synos-template-btn:hover {
+  opacity: 0.7;
+}
+
+.synos-templates-footer {
+  text-align: center;
+}

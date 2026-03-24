@@ -1,0 +1,158 @@
+.synos-pricing {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.synos-pricing-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.synos-pricing-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.synos-pricing-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.synos-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.synos-pricing-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.synos-pricing-card:hover {
+  transform: translateY(-4px);
+}
+
+.synos-pricing-highlighted {
+  background: var(--text-primary);
+  color: var(--bg);
+}
+
+.synos-pricing-highlighted .synos-pricing-plan-name,
+.synos-pricing-highlighted .synos-pricing-amount {
+  color: var(--bg);
+}
+
+.synos-pricing-highlighted .synos-pricing-period,
+.synos-pricing-highlighted .synos-pricing-plan-desc {
+  color: rgba(245, 240, 234, 0.6);
+}
+
+.synos-pricing-highlighted .synos-pricing-features li {
+  color: rgba(245, 240, 234, 0.8);
+  border-bottom-color: rgba(245, 240, 234, 0.1);
+}
+
+.synos-pricing-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.synos-pricing-plan-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.synos-pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.synos-pricing-amount {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.synos-pricing-period {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.synos-pricing-plan-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.synos-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  flex-grow: 1;
+}
+
+.synos-pricing-features li {
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.synos-pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.synos-pricing-cta {
+  width: 100%;
+  text-align: center;
+}
+
+.synos-pricing-highlighted .synos-btn-primary {
+  background: var(--accent);
+}
+
+.synos-pricing-highlighted .synos-btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+@media (max-width: 1024px) {
+  .synos-pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .synos-pricing-title {
+    font-size: 32px;
+  }
+}

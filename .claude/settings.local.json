@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(npm run:*)",
+      "Bash(npx payload:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m yt_dlp -f \"bestvideo+bestaudio/best\" --merge-output-format mp4 -o \"%\\(title\\)s.%\\(ext\\)s\" \"https://www.youtube.com/watch?v=sd_utEofAXo\")",
+      "Bash(find C:/Users/aleen/synos_mark -name circular-logo*)",
+      "Bash(python:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

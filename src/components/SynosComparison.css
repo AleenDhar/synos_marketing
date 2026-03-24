@@ -1,0 +1,94 @@
+.synos-comparison {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.synos-comparison-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.synos-comparison-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.synos-comparison-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.synos-comparison-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.synos-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.synos-comparison-table thead th {
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.synos-comp-feature-col {
+  text-align: left !important;
+}
+
+.synos-comp-highlight {
+  color: var(--accent) !important;
+}
+
+.synos-comparison-table tbody td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.synos-comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.synos-comp-feature {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.synos-comp-cell {
+  text-align: center;
+  font-size: 16px;
+  color: var(--border);
+}
+
+.synos-comp-cell-highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .synos-comparison-title {
+    font-size: 32px;
+  }
+  .synos-comparison-table {
+    font-size: 13px;
+    min-width: 500px;
+  }
+}

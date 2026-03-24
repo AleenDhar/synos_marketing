@@ -1,0 +1,144 @@
+.hero {
+  padding: 80px 0 40px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-right: auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background-color: var(--bg-secondary);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.hero-badge span {
+  font-size: 16px;
+}
+
+.hero-title {
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-google, .btn-email {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.btn-google {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-email {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-email span {
+  font-weight: 400;
+}
+
+.hero-footer-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  margin-bottom: 64px;
+}
+
+.hero-social-proof {
+  display: flex;
+  gap: 32px;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stars {
+  color: #ffb400;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.proof-logo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.p-logo, .g-logo {
+  width: 20px;
+  height: 20px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+  .hero-content {
+    margin-right: 0;
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-social-proof {
+    justify-content: center;
+  }
+}

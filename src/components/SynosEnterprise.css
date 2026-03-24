@@ -1,0 +1,83 @@
+.synos-enterprise {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.synos-enterprise-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.synos-enterprise-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-primary);
+}
+
+.synos-enterprise-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.synos-enterprise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.synos-enterprise-card {
+  background: var(--bg-card);
+  padding: 32px;
+  border-radius: 20px;
+  transition: transform 0.2s;
+}
+
+.synos-enterprise-card:hover {
+  transform: translateY(-4px);
+}
+
+.synos-enterprise-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.synos-enterprise-card-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.synos-enterprise-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .synos-enterprise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .synos-enterprise-grid {
+    grid-template-columns: 1fr;
+  }
+  .synos-enterprise-title {
+    font-size: 32px;
+  }
+  .synos-enterprise-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

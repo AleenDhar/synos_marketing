@@ -1,0 +1,104 @@
+.synos-navbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.synos-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.synos-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.synos-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.synos-logo-icon {
+  border-radius: 6px;
+}
+
+.synos-logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.synos-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 36px;
+}
+
+.synos-nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.synos-nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.synos-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.synos-login-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.synos-login-link:hover {
+  color: var(--text-primary);
+}
+
+.synos-btn-get-started {
+  background: var(--text-primary);
+  color: var(--bg);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.synos-btn-get-started:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .synos-nav-links {
+    display: none;
+  }
+}

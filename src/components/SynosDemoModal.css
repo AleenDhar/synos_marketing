@@ -1,0 +1,228 @@
+.synos-demo-modal {
+  background: var(--bg);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.synos-demo-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.synos-demo-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.synos-demo-back {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.synos-demo-back:hover {
+  color: var(--text-primary);
+}
+
+.synos-demo-layout {
+  display: flex;
+  gap: 32px;
+}
+
+/* Calendar */
+.synos-calendar {
+  flex: 1;
+  min-width: 0;
+}
+
+.synos-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.synos-calendar-month {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.synos-calendar-nav {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.synos-calendar-nav:hover:not(:disabled) {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.synos-calendar-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.synos-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.synos-calendar-day-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 0;
+}
+
+.synos-calendar-empty {
+  aspect-ratio: 1;
+}
+
+.synos-calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.15s;
+}
+
+.synos-calendar-day:hover:not(.disabled):not(.selected) {
+  background: var(--bg-card);
+}
+
+.synos-calendar-day.today {
+  font-weight: 700;
+  border: 1.5px solid var(--border);
+}
+
+.synos-calendar-day.selected {
+  background: var(--text-primary);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.synos-calendar-day.disabled {
+  color: var(--border);
+  cursor: not-allowed;
+}
+
+/* Time slots */
+.synos-time-slots {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.synos-time-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.synos-time-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.synos-time-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.synos-time-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.synos-time-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.synos-time-slot {
+  padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text-primary);
+  transition: all 0.15s;
+}
+
+.synos-time-slot:hover:not(.selected) {
+  border-color: var(--text-primary);
+}
+
+.synos-time-slot.selected {
+  background: var(--text-primary);
+  color: var(--bg);
+  border-color: var(--text-primary);
+  font-weight: 600;
+}
+
+.synos-demo-actions {
+  margin-top: 24px;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .synos-demo-modal {
+    padding: 28px 20px;
+  }
+  .synos-demo-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .synos-time-slots {
+    width: 100%;
+  }
+  .synos-time-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: none;
+  }
+  .synos-time-slot {
+    flex: 1 1 auto;
+    min-width: 100px;
+  }
+}
