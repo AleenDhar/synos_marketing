@@ -1,5 +1,6 @@
 import React from 'react';
 import NextImage from 'next/image';
+import Link from 'next/link';
 import './SynosNavbar.css';
 
 interface SynosNavbarProps {
@@ -11,10 +12,10 @@ export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => 
     <nav className="synos-navbar">
       <div className="synos-nav-container">
         <div className="synos-nav-left">
-          <a href="/" className="synos-logo">
+          <Link href="/" className="synos-logo">
             <NextImage src="/logo.png" alt="synosai" width={32} height={32} className="synos-logo-icon" />
             <span className="synos-logo-text">synosai</span>
-          </a>
+          </Link>
           <ul className="synos-nav-links">
             <li><a href="#use-cases">Use Cases</a></li>
             <li><a href="#templates">Templates</a></li>
