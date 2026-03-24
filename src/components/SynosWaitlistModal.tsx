@@ -41,7 +41,7 @@ export const SynosWaitlistModal: React.FC<SynosWaitlistModalProps> = ({ isOpen, 
 
       if (res.ok) {
         setStatus('success');
-        const markConversion = (window as Record<string, unknown>).__synosMarkConversion as ((type: string, email: string) => void) | undefined;
+        const markConversion = (window as unknown as Record<string, unknown>).__synosMarkConversion as ((type: string, email: string) => void) | undefined;
         if (markConversion) markConversion('waitlist', email);
       } else {
         const data = await res.json();

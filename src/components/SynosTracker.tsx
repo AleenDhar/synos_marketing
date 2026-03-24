@@ -221,8 +221,8 @@ export const SynosTracker: React.FC = () => {
 
   // Expose method to mark conversion
   useEffect(() => {
-    (window as Record<string, unknown>).__synosVisitorId = () => visitorId.current;
-    (window as Record<string, unknown>).__synosMarkConversion = async (type: string, email: string) => {
+    (window as unknown as Record<string, unknown>).__synosVisitorId = () => visitorId.current;
+    (window as unknown as Record<string, unknown>).__synosMarkConversion = async (type: string, email: string) => {
       if (!visitorId.current) return;
       try {
         await fetch(`/api/visitors/${visitorId.current}`, {
