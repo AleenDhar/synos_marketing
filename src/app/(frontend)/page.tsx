@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SynosNavbar } from '@/components/SynosNavbar';
 import { SynosHero } from '@/components/SynosHero';
 import { SynosHowItWorks } from '@/components/SynosHowItWorks';
@@ -13,14 +13,12 @@ import { SynosPricing } from '@/components/SynosPricing';
 import { SynosFinalCTA } from '@/components/SynosFinalCTA';
 import { SynosFooter } from '@/components/SynosFooter';
 import { SynosWaitlistModal } from '@/components/SynosWaitlistModal';
-import { SynosDemoModal } from '@/components/SynosDemoModal';
 import { SynosTracker } from '@/components/SynosTracker';
 
 export default function LandingPage() {
   const [waitlistOpen, setWaitlistOpen] = useState(false);
-  const [demoOpen, setDemoOpen] = useState(false);
   const openWaitlist = () => setWaitlistOpen(true);
-  const openDemo = () => setDemoOpen(true);
+  const openDemo = () => window.open('https://calendly.com/dharaleen/30min', '_blank');
 
   return (
     <div className="synos-landing">
@@ -38,7 +36,6 @@ export default function LandingPage() {
       </main>
       <SynosFooter />
       <SynosWaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
-      <SynosDemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
       <SynosTracker />
 
       <style jsx global>{`

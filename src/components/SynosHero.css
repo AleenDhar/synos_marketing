@@ -121,7 +121,7 @@
 
 @media (max-width: 768px) {
   .synos-hero-split {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
   }
   .synos-hero-content {

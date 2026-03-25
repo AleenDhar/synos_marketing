@@ -25,7 +25,7 @@ const INTEGRATIONS_ROW_2 = [
   { name: 'Shopify', icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
   { name: 'QuickBooks', icon: '/logos/quickbooks.svg' },
   { name: 'Zendesk', icon: 'https://cdn.worldvectorlogo.com/logos/zendesk-1.svg' },
-  { name: 'Attio', icon: '/logos/attio.svg' },
+  { name: 'Attio', icon: '/logos/attio.png' },
   { name: 'GitHub', icon: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg' },
   { name: 'Google Sheets', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png' },
   { name: 'Zoom', icon: 'https://cdn.worldvectorlogo.com/logos/zoom-communications-logo.svg' },
