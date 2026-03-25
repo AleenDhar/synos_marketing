@@ -8,7 +8,7 @@ export const SynosComparison: React.FC = () => {
     { feature: 'Generates text & answers questions', values: [true, true, true, true, false, true] },
     { feature: 'Browses the web autonomously', values: [false, true, false, true, false, true] },
     { feature: 'Persistent browser with cookie storage', values: [false, false, false, true, false, true] },
-    { feature: 'Connects 1,000+ business apps', values: [false, false, false, false, true, true] },
+    { feature: 'Connects 500+ business apps', values: [false, false, false, false, true, true] },
     { feature: 'Dedicated cloud compute per agent', values: [false, false, true, false, false, true] },
     { feature: 'Builds & hosts live web apps', values: [false, false, true, false, false, true] },
     { feature: 'Deploys to Slack, Teams, Discord', values: [false, true, false, true, false, true] },

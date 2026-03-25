@@ -12,7 +12,7 @@ export const SynosHowItWorks: React.FC<SynosHowItWorksProps> = ({ onWaitlistClic
       description: "Your AI employee has a real browser with persistent cookie storage. Login once — it stays logged in. It navigates websites, fills forms, extracts data, and automates workflows like a human sitting at a screen."
     },
     {
-      title: '1,000+ App Connections',
+      title: '500+ App Connections',
       description: "Connect your CRM, LinkedIn, Apollo, ZoomInfo, Seamless.ai, Stripe, Slack, and hundreds more. Wire your entire stack together and let the AI operate across all of them."
     },
     {

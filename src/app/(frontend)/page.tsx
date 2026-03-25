@@ -30,7 +30,7 @@ export default function LandingPage() {
         <SynosFeatureGrid />
         <SynosComparison />
         <SynosTemplates />
-        <SynosEnterprise onDemoClick={openDemo} />
+        {/* <SynosEnterprise onDemoClick={openDemo} /> */}
         <SynosPricing onWaitlistClick={openWaitlist} />
         <SynosFinalCTA onWaitlistClick={openWaitlist} onDemoClick={openDemo} />
       </main>

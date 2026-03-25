@@ -62,7 +62,7 @@ export const SynosIntegrations: React.FC = () => {
         </div>
 
         <div className="synos-integrations-action">
-          <a href="#all-integrations" className="synos-link-more">See all 1,000+ connections &rarr;</a>
+          <a href="#all-integrations" className="synos-link-more">See all 500+ connections &rarr;</a>
         </div>
       </div>
     </section>

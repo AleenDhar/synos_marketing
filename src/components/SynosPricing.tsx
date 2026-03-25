@@ -30,7 +30,7 @@ export const SynosPricing: React.FC<SynosPricingProps> = ({ onWaitlistClick }) =
       features: [
         '5 AI employees',
         'Unlimited task executions',
-        '1,000+ app connections',
+        '500+ app connections',
         'Persistent browser sessions',
         'Dedicated Fargate instance',
         'Build & host apps',
