@@ -39,7 +39,7 @@ export const SynosChatPreview: React.FC = () => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlide]);
 
   return (
     <section className="synos-chat-preview">
