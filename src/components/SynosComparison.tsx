@@ -2,17 +2,20 @@ import React from 'react';
 import './SynosComparison.css';
 
 export const SynosComparison: React.FC = () => {
+  const competitors = ['ChatGPT / Copilot', 'Claude', 'Replit', 'OpenClaw', 'Zapier / Make'];
+
   const rows = [
-    { feature: 'Generates text & answers questions', chatgpt: true, zapier: false, synos: true },
-    { feature: 'Browses the web autonomously', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Persistent browser with cookie storage', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Connects 1,000+ business apps', chatgpt: false, zapier: true, synos: true },
-    { feature: 'Dedicated cloud compute per agent', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Builds & hosts live web apps', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Deploys to Slack, Teams, Discord', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Remembers context across sessions', chatgpt: false, zapier: false, synos: true },
-    { feature: 'Runs background jobs for hours', chatgpt: false, zapier: true, synos: true },
-    { feature: 'No code required', chatgpt: true, zapier: true, synos: true },
+    { feature: 'Generates text & answers questions', values: [true, true, true, true, false, true] },
+    { feature: 'Browses the web autonomously', values: [false, true, false, true, false, true] },
+    { feature: 'Persistent browser with cookie storage', values: [false, false, false, true, false, true] },
+    { feature: 'Connects 1,000+ business apps', values: [false, false, false, false, true, true] },
+    { feature: 'Dedicated cloud compute per agent', values: [false, false, true, false, false, true] },
+    { feature: 'Builds & hosts live web apps', values: [false, false, true, false, false, true] },
+    { feature: 'Deploys to Slack, Teams, Discord', values: [false, true, false, true, false, true] },
+    { feature: 'Remembers context across sessions', values: [false, true, false, true, false, true] },
+    { feature: 'Runs background jobs for hours', values: [false, false, true, true, true, true] },
+    { feature: 'No code required', values: [true, true, true, false, true, true] },
+    { feature: 'Visual workflow builder', values: [false, false, true, true, true, true] },
   ];
 
   return (
@@ -20,25 +23,31 @@ export const SynosComparison: React.FC = () => {
       <div className="synos-container">
         <div className="synos-comparison-header">
           <h2 className="synos-comparison-title">Not another AI toy.</h2>
-          <p className="synos-comparison-subtitle">ChatGPT talks. Zapier connects. Synos does both — and actually executes.</p>
+          <p className="synos-comparison-subtitle">Others do one thing. Synos does everything — and actually executes.</p>
         </div>
         <div className="synos-comparison-table-wrap">
           <table className="synos-comparison-table">
             <thead>
               <tr>
                 <th className="synos-comp-feature-col">Capability</th>
-                <th>ChatGPT / Copilot</th>
-                <th>Zapier / Make</th>
-                <th className="synos-comp-highlight">synosai</th>
+                {competitors.map((name) => (
+                  <th key={name}>{name}</th>
+                ))}
+                <th className="synos-comp-highlight">SynosAI</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
                 <tr key={i}>
                   <td className="synos-comp-feature">{row.feature}</td>
-                  <td className="synos-comp-cell">{row.chatgpt ? '✓' : '—'}</td>
-                  <td className="synos-comp-cell">{row.zapier ? '✓' : '—'}</td>
-                  <td className="synos-comp-cell synos-comp-cell-highlight">{row.synos ? '✓' : '—'}</td>
+                  {row.values.slice(0, competitors.length).map((val, j) => (
+                    <td key={j} className={`synos-comp-cell ${val ? 'synos-comp-cell-check' : ''}`}>
+                      {val ? '✓' : '—'}
+                    </td>
+                  ))}
+                  <td className="synos-comp-cell synos-comp-cell-highlight">
+                    {row.values[row.values.length - 1] ? '✓' : '—'}
+                  </td>
                 </tr>
               ))}
             </tbody>
