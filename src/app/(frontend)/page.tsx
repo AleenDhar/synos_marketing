@@ -29,7 +29,7 @@ export default function LandingPage() {
         <SynosChatPreview />
         <SynosFeatureGrid />
         <SynosComparison />
-        <SynosTemplates />
+        <SynosTemplates onDemoClick={openDemo} />
         {/* <SynosEnterprise onDemoClick={openDemo} /> */}
         <SynosPricing onWaitlistClick={openWaitlist} />
         <SynosFinalCTA onWaitlistClick={openWaitlist} onDemoClick={openDemo} />

@@ -1,7 +1,11 @@
 import React from 'react';
 import './SynosTemplates.css';
 
-export const SynosTemplates: React.FC = () => {
+interface SynosTemplatesProps {
+  onDemoClick?: () => void;
+}
+
+export const SynosTemplates: React.FC<SynosTemplatesProps> = ({ onDemoClick }) => {
   const templates = [
     { title: 'LinkedIn Outreach Agent', desc: 'Finds new leads, sends personalized connection requests, and follows up — all through persistent browser sessions on LinkedIn.' },
     { title: 'ABM Account Reactivation', desc: 'Scans your CRM for cold accounts, finds current contacts, researches company news, and sends warm re-engagement emails.' },
@@ -25,12 +29,12 @@ export const SynosTemplates: React.FC = () => {
             <div key={index} className="synos-template-card">
               <h3 className="synos-template-card-title">{template.title}</h3>
               <p className="synos-template-card-desc">{template.desc}</p>
-              <button className="synos-template-btn">Use Template &rarr;</button>
             </div>
           ))}
         </div>
-        <div className="synos-templates-footer">
-          <button className="synos-btn-secondary">Browse all templates &rarr;</button>
+        <div className="synos-templates-cta">
+          <p className="synos-templates-cta-text">Got a crazy idea for AI in your business?</p>
+          <button className="synos-btn-primary" onClick={onDemoClick}>Book a Demo</button>
         </div>
       </div>
     </section>

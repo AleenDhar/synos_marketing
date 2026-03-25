@@ -72,6 +72,13 @@
   opacity: 0.7;
 }
 
-.synos-templates-footer {
+.synos-templates-cta {
   text-align: center;
+}
+
+.synos-templates-cta-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
 }
