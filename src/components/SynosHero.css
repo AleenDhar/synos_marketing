@@ -48,6 +48,7 @@
 }
 
 .synos-hero-integrations {
+  margin-top: 60px;
   padding-top: 40px;
   border-top: 1px solid var(--border);
   overflow: hidden;
@@ -123,6 +124,7 @@
   .synos-hero-split {
     flex-direction: column-reverse;
     text-align: center;
+    gap: 0;
   }
   .synos-hero-content {
     text-align: center;
