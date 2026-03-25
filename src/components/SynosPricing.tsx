@@ -63,9 +63,8 @@ export const SynosPricing: React.FC<SynosPricingProps> = ({ onWaitlistClick }) =
     <section className="synos-pricing" id="pricing">
       <div className="synos-container">
         <div className="synos-pricing-header">
-          <h2 className="synos-pricing-title">Simple pricing. Start free.</h2>
+          <h2 className="synos-pricing-title">Simple pricing.</h2>
           <span className="synos-pricing-coming-soon">Coming Soon</span>
-          <p className="synos-pricing-subtitle">No credit card required. Upgrade when you&apos;re ready.</p>
         </div>
         {/* <div className="synos-pricing-grid">
           {plans.map((plan, i) => (
