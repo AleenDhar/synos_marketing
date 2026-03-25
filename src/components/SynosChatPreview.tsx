@@ -16,6 +16,18 @@ const slides = [
     subtitle: "Multi-step automations with branching logic, conditional triggers, and scheduling. Drag, drop, deploy. Your AI employee follows the playbook.",
     image: "/workflow.png",
     label: "Workflow Builder"
+  },
+  {
+    title: "Your AI gets its own browser.",
+    subtitle: "Synos agents browse the web like a human — navigating sites, filling forms, extracting data, and interacting with tools that don't have APIs. No extensions, no workarounds.",
+    image: "/own-browser.png",
+    label: "Own Browser"
+  },
+  {
+    title: "Dedicated cloud compute for every agent.",
+    subtitle: "Each AI employee runs on its own isolated AWS Fargate instance. No shared resources, no cold starts, no limits. Enterprise-grade infrastructure that scales with your workload.",
+    image: "/cloud-compute.png",
+    label: "Cloud Compute"
   }
 ];
 
