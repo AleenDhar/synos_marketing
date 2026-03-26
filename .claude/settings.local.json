@@ -13,7 +13,12 @@
       "Bash(npx next:*)",
       "Bash(xargs grep:*)",
       "Bash(grep:*)",
-      "Bash(find C:Usersaleensynos_mark/src -path */api/* -name *demo* -o -path */api/* -name *booking*)"
+      "Bash(find C:Usersaleensynos_mark/src -path */api/* -name *demo* -o -path */api/* -name *booking*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "WebFetch(domain:avatars.githubusercontent.com)"
     ]
   }
 }

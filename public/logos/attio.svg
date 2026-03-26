@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <path d="M12 48V16l20 32L52 16v32" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+  <path d="M77.5 62.5L158.5 143.5L77.5 224.5L28 175L109 94L59.5 44.5L77.5 62.5Z" fill="#2D2D2D"/>
+  <path d="M77.5 62.5L28 112L28 175L77.5 224.5L127 175L46 94L77.5 62.5Z" fill="#2D2D2D"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M77.5 42L18 101.5V185L77.5 244.5L137 185V101.5L77.5 42ZM77.5 72L47 101.5V185L77.5 214.5L108 185V101.5L77.5 72Z" fill="#2D2D2D"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M202.5 135L168 169.5V210L202.5 244.5L237 210V169.5L202.5 135ZM202.5 158L185 175.5V204L202.5 221.5L220 204V175.5L202.5 158Z" fill="#2D2D2D"/>
 </svg>
