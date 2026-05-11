@@ -1,0 +1,247 @@
+/* ────────────────────────────────────────────────────────────
+   Blog section — recent dispatches, dark crimson + red accents
+   ──────────────────────────────────────────────────────────── */
+
+.synos-blog-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #0F0303;
+  color: #ffffff;
+  overflow: hidden;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+}
+
+.synos-blog-section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.synos-blog-section-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 130% 90% at 50% 0%,
+    #4A0E0E 0%,
+    #2A0808 45%,
+    #0F0303 90%
+  );
+}
+
+.synos-blog-section-bg-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.synos-blog-section-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(80px, 10vh, 140px) clamp(24px, 5vw, 64px);
+}
+
+/* Push the header down so the fixed 72px navbar doesn't crash into it.
+   Padding alone wasn't enough — using margin-top on the header gives a
+   guaranteed clear gap regardless of any parent overflow/min-height quirks. */
+.synos-blog-section-header {
+  margin-top: clamp(80px, 9vh, 140px);
+}
+
+/* ── Header row ───────────────────────────────────────────── */
+
+.synos-blog-section-header {
+  margin-bottom: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 36px;
+}
+
+.synos-blog-section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: #E63D3D;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.synos-blog-section-headline-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.synos-blog-section-headline {
+  font-family: var(--font-display), 'Archivo Black', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  max-width: 720px;
+}
+
+.synos-blog-section-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: transparent;
+  border: 1px solid rgba(230, 61, 61, 0.5);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.synos-blog-section-all:hover {
+  background: #E63D3D;
+  border-color: #E63D3D;
+}
+
+.synos-blog-section-all svg {
+  transition: transform 0.15s ease;
+}
+
+.synos-blog-section-all:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ── Posts list ───────────────────────────────────────────── */
+
+.synos-blog-section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+.synos-blog-section-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.synos-blog-section-card:hover {
+  background: rgba(230, 61, 61, 0.06);
+  border-color: rgba(230, 61, 61, 0.4);
+  transform: translateY(-4px);
+}
+
+.synos-blog-section-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.synos-blog-section-card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.synos-blog-section-card-tag {
+  color: #E63D3D;
+  border: 1px solid rgba(230, 61, 61, 0.5);
+  padding: 3px 7px;
+}
+
+.synos-blog-section-card-title {
+  font-family: var(--font-display), 'Archivo Black', sans-serif;
+  font-size: clamp(20px, 1.6vw, 24px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.18s ease;
+}
+
+.synos-blog-section-card:hover .synos-blog-section-card-title {
+  color: #E63D3D;
+}
+
+.synos-blog-section-card-excerpt {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 22px;
+  flex: 1;
+}
+
+.synos-blog-section-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.synos-blog-section-card-read {
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.synos-blog-section-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #E63D3D;
+  text-transform: uppercase;
+}
+
+.synos-blog-section-card-arrow svg {
+  transition: transform 0.18s ease;
+}
+
+.synos-blog-section-card:hover .synos-blog-section-card-arrow svg {
+  transform: translate(2px, -2px);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .synos-blog-section-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .synos-blog-section-list {
+    grid-template-columns: 1fr;
+  }
+  .synos-blog-section-headline-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -25,6 +25,7 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { SiteSettings } from './globals/SiteSettings'
 import { Scripts } from './globals/Scripts'
+import { AnnouncementBanner } from './globals/AnnouncementBanner'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -53,7 +54,7 @@ export default buildConfig({
     Media,
     Users,
   ],
-  globals: [Header, Footer, SiteSettings, Scripts],
+  globals: [Header, Footer, SiteSettings, Scripts, AnnouncementBanner],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

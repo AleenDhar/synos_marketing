@@ -1,0 +1,125 @@
+/* Persistent promo card — fixed to bottom-right of the viewport */
+.synos-promo {
+  position: fixed;
+  right: clamp(16px, 2vw, 32px);
+  bottom: clamp(16px, 2vw, 28px);
+  width: 360px;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #ffffff;
+  color: #0F0303;
+  text-decoration: none;
+  z-index: 200;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  animation: synos-promo-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.synos-promo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes synos-promo-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.synos-promo-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+
+.synos-promo-art-logo {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 4px 12px rgba(218, 85, 47, 0.4));
+}
+
+.synos-promo-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.synos-promo-eyebrow {
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(15, 3, 3, 0.55);
+  text-transform: uppercase;
+}
+
+.synos-promo-title {
+  font-family: var(--font-display), 'Archivo Black', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 2px 0 4px;
+  font-weight: 400;
+}
+
+.synos-promo-desc {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(15, 3, 3, 0.6);
+  margin: 0;
+}
+
+.synos-promo-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  background: #E63D3D;
+  color: #ffffff;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.synos-promo:hover .synos-promo-cta {
+  background: #FF4F4F;
+}
+
+/* Mobile — shrink + tuck */
+@media (max-width: 640px) {
+  .synos-promo {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 12px;
+    grid-template-columns: 48px 1fr auto;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .synos-promo-art,
+  .synos-promo-art-logo {
+    width: 48px;
+    height: 48px;
+  }
+  .synos-promo-title {
+    font-size: 13px;
+  }
+  .synos-promo-desc {
+    font-size: 10px;
+  }
+  .synos-promo-cta {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+}

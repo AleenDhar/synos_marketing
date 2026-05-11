@@ -118,12 +118,14 @@ export interface Config {
     footer: Footer;
     'site-settings': SiteSetting;
     scripts: Script;
+    'announcement-banner': AnnouncementBanner;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     scripts: ScriptsSelect<false> | ScriptsSelect<true>;
+    'announcement-banner': AnnouncementBannerSelect<false> | AnnouncementBannerSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1382,6 +1384,35 @@ export interface Script {
   createdAt?: string | null;
 }
 /**
+ * Top-of-page announcement bar shown on every page. Toggle "Enabled" to show/hide.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "announcement-banner".
+ */
+export interface AnnouncementBanner {
+  id: number;
+  /**
+   * Show the banner across the site.
+   */
+  enabled?: boolean | null;
+  /**
+   * Short announcement text. Keep under ~120 characters.
+   */
+  message: string;
+  style?: ('accent' | 'dark' | 'success' | 'warning' | 'info') | null;
+  link?: {
+    label?: string | null;
+    url?: string | null;
+    newTab?: boolean | null;
+  };
+  /**
+   * If checked, visitors can close the banner. Their choice is remembered until the message changes.
+   */
+  dismissible?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -1468,6 +1499,26 @@ export interface ScriptsSelect<T extends boolean = true> {
   headScripts?: T;
   bodyScripts?: T;
   footerScripts?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "announcement-banner_select".
+ */
+export interface AnnouncementBannerSelect<T extends boolean = true> {
+  enabled?: T;
+  message?: T;
+  style?: T;
+  link?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        newTab?: T;
+      };
+  dismissible?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

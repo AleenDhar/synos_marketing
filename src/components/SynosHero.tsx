@@ -1,35 +1,8 @@
 'use client'
 
 import React from 'react';
-import NextImage from 'next/image';
-import { SplineScene } from './SplineScene';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import './SynosHero.css';
-
-const INTEGRATIONS_ROW_1 = [
-  { name: 'Gmail', icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png' },
-  { name: 'Slack', icon: 'https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg' },
-  { name: 'Salesforce', icon: 'https://cdn.worldvectorlogo.com/logos/salesforce-2.svg' },
-  { name: 'HubSpot', icon: 'https://cdn.worldvectorlogo.com/logos/hubspot-1.svg' },
-  { name: 'LinkedIn', icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg' },
-  { name: 'Notion', icon: 'https://cdn.worldvectorlogo.com/logos/notion-2.svg' },
-  { name: 'Stripe', icon: 'https://cdn.worldvectorlogo.com/logos/stripe-4.svg' },
-  { name: 'Discord', icon: 'https://cdn.worldvectorlogo.com/logos/discord-6.svg' },
-  { name: 'Teams', icon: 'https://cdn.worldvectorlogo.com/logos/microsoft-teams-1.svg' },
-  { name: 'Telegram', icon: 'https://cdn.worldvectorlogo.com/logos/telegram-1.svg' },
-];
-
-const INTEGRATIONS_ROW_2 = [
-  { name: 'Apollo', icon: 'https://cdn.worldvectorlogo.com/logos/apollo-graphql-compact.svg' },
-  { name: 'Jira', icon: 'https://cdn.worldvectorlogo.com/logos/jira-1.svg' },
-  { name: 'Airtable', icon: '/logos/airtable.svg' },
-  { name: 'Shopify', icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
-  { name: 'QuickBooks', icon: '/logos/quickbooks.svg' },
-  { name: 'Zendesk', icon: 'https://cdn.worldvectorlogo.com/logos/zendesk-1.svg' },
-  { name: 'Attio', icon: '/logos/attio.png' },
-  { name: 'GitHub', icon: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg' },
-  { name: 'Google Sheets', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png' },
-  { name: 'Zoom', icon: 'https://cdn.worldvectorlogo.com/logos/zoom-communications-logo.svg' },
-];
 
 interface SynosHeroProps {
   onWaitlistClick: () => void;
@@ -39,54 +12,103 @@ interface SynosHeroProps {
 export const SynosHero: React.FC<SynosHeroProps> = ({ onWaitlistClick, onDemoClick }) => {
   return (
     <section className="synos-hero">
-      <div className="synos-hero-split">
-        <div className="synos-hero-content">
-          <h1 className="synos-hero-title">
-            Hire an AI that actually does the work.
-          </h1>
-          <p className="synos-hero-description">
-            Not a chatbot. Not a copilot. An AI employee that executes your business processes, connects your apps, builds tools, and browses the web — autonomously.
-          </p>
-          <div className="synos-hero-actions">
-            <button className="synos-btn-primary" onClick={onWaitlistClick}>Join the Waitlist</button>
-            <button className="synos-btn-secondary" onClick={onDemoClick}>Book a Demo</button>
-          </div>
+      <div className="synos-hero-bg" aria-hidden="true">
+        <div className="synos-hero-bg-gradient" />
+        <div className="synos-hero-bg-text" aria-hidden="true">
+          <span className="synos-hero-bg-text-fill">SYNOS</span>
+          <span className="synos-hero-bg-text-reveal">SYNOS</span>
         </div>
-        <div className="synos-hero-robot">
-          <SplineScene
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="synos-spline-scene"
-          />
+        {/* <img
+          src="/car1.png"
+          alt=""
+          className="synos-hero-flying-car"
+          aria-hidden="true"
+        /> */}
+        <div className="synos-hero-bg-grain" />
+        <div className="synos-hero-rain" aria-hidden="true">
+          {Array.from({ length: 80 }).map((_, i) => (
+            <span key={`drop-${i}`} className={`synos-hero-raindrop synos-hero-raindrop-${i}`} />
+          ))}
         </div>
       </div>
 
-      <div className="synos-hero-integrations">
-        <div className="synos-container">
-          <p className="synos-hero-integrations-label">Connects to the tools you already use</p>
-          <div className="synos-logo-track-container">
-            <div className="synos-logo-track">
-              <div className="synos-logo-scroll">
-                {INTEGRATIONS_ROW_1.concat(INTEGRATIONS_ROW_1).map((item, index) => (
-                  <div key={index} className="synos-integration-item">
-                    <NextImage src={item.icon} alt={item.name} className="synos-integration-icon" width={32} height={32} />
-                    <span className="synos-integration-name">{item.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="synos-logo-track reverse">
-              <div className="synos-logo-scroll">
-                {INTEGRATIONS_ROW_2.concat(INTEGRATIONS_ROW_2).map((item, index) => (
-                  <div key={index} className="synos-integration-item">
-                    <NextImage src={item.icon} alt={item.name} className="synos-integration-icon" width={32} height={32} />
-                    <span className="synos-integration-name">{item.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <div className="synos-hero-inner">
+        {/* Vertical kanji + hex mark — far left rail */}
+        <aside className="synos-hero-rail" aria-hidden="true">
+          <span className="synos-hero-kanji">未来を、仕組みに。</span>
+          <svg
+            className="synos-hero-hex"
+            viewBox="0 0 24 28"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <polygon points="12,2 22,8 22,20 12,26 2,20 2,8" />
+            <circle cx="12" cy="14" r="2.5" />
+          </svg>
+        </aside>
+
+        {/* Left content block — headline, sub, CTAs */}
+        <div className="synos-hero-content">
+          <h1 className="synos-hero-headline">
+            AI AGENTS THAT
+            <br />
+            WORK LIKE <span className="synos-hero-headline-accent">YOU</span> DO.
+          </h1>
+          <p className="synos-hero-sub">
+            SYNOS builds autonomous AI agents that execute, adapt, and scale —
+            so you can focus on what matters.
+          </p>
+
+          <div className="synos-hero-actions">
+            <button
+              type="button"
+              className="synos-hero-cta synos-hero-cta-primary"
+              onClick={onWaitlistClick}
+            >
+              <span className="synos-hero-cta-corners" aria-hidden="true">
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-tl" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-tr" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-bl" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-br" />
+              </span>
+              <span className="synos-hero-cta-label">START BUILDING</span>
+              <ArrowUpRight size={16} className="synos-hero-cta-arrow" />
+            </button>
+            <button
+              type="button"
+              className="synos-hero-cta synos-hero-cta-secondary"
+              onClick={onDemoClick}
+            >
+              <span className="synos-hero-cta-corners" aria-hidden="true">
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-tl" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-tr" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-bl" />
+                <span className="synos-hero-cta-corner synos-hero-cta-corner-br" />
+              </span>
+              <span className="synos-hero-cta-label">BOOK A DEMO</span>
+              <ArrowUpRight size={16} className="synos-hero-cta-arrow" />
+            </button>
           </div>
+
         </div>
+
+        {/* Character — pushed to the right */}
+        <div className="synos-hero-character" aria-hidden="true">
+          <img
+            src="/synos-hero.png"
+            alt=""
+            className="synos-hero-character-img"
+          />
+        </div>
+
       </div>
+
+      <a className="synos-hero-scroll" href="#product" aria-label="Scroll to next section">
+        <span className="synos-hero-scroll-label">SCROLL FOR MORE</span>
+        <ChevronDown size={16} className="synos-hero-scroll-icon" aria-hidden="true" />
+      </a>
     </section>
   );
 };

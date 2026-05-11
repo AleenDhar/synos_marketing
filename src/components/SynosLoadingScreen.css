@@ -1,0 +1,120 @@
+/* Boot loader — full-viewport overlay shown on first page load.
+   Shrine gate sits behind the percentage counter; both fade out on completion. */
+
+.synos-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0F0303;
+  pointer-events: all;
+  overflow: hidden;
+  transition: opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  /* Flexbox column — children flow vertically and stay centered on all
+     viewport sizes (including iOS where 100vh hides behind the address bar). */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.synos-loader.is-fading {
+  opacity: 0;
+}
+
+/* Shrine gate — flex item, centered by the parent's flex layout.
+   Width + aspect-ratio reserve the space from the first paint so the
+   stack doesn't jump when the image finishes downloading. */
+.synos-loader-shrine {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(280px, 60vw, 820px);
+  max-width: 90vw;
+  aspect-ratio: 3 / 2;
+  pointer-events: none;
+  animation: synos-loader-shrine-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: block;
+  line-height: 0;
+}
+
+.synos-loader-shrine-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 60px rgba(230, 61, 61, 0.35))
+    drop-shadow(0 30px 80px rgba(0, 0, 0, 0.7));
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .synos-loader-shrine {
+    width: 78vw;
+  }
+}
+
+@keyframes synos-loader-shrine-in {
+  from { opacity: 0; transform: scale(1.05); }
+  to   { opacity: 0.9; transform: scale(1); }
+}
+
+/* Pixel-style percentage counter — flex item, sits below the shrine */
+.synos-loader-counter {
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 2;
+  font-family: var(--font-pixel), 'VT323', 'Courier New', monospace;
+  font-size: clamp(28px, 3.5vw, 56px);
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.3),
+    0 0 24px rgba(230, 61, 61, 0.15);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Subtle scan-line overlay across the whole loader for retro CRT feel */
+.synos-loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: overlay;
+}
+
+/* Tag below the counter */
+.synos-loader-tag {
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 2;
+  font-family: var(--font-pixel), 'VT323', 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  user-select: none;
+  animation: synos-loader-tag-blink 1.6s steps(2) infinite;
+  white-space: nowrap;
+}
+
+@keyframes synos-loader-tag-blink {
+  0%, 50% { opacity: 0.55; }
+  51%, 100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .synos-loader-shrine,
+  .synos-loader-tag {
+    animation: none;
+  }
+}

@@ -3,11 +3,16 @@
 import { useState } from 'react';
 import { SynosNavbar } from '@/components/SynosNavbar';
 import { SynosHero } from '@/components/SynosHero';
+import { SynosAppsSection } from '@/components/SynosAppsSection';
+import { SynosAppsSection2 } from '@/components/SynosAppsSection2';
 import { SynosHowItWorks } from '@/components/SynosHowItWorks';
 import { SynosChatPreview } from '@/components/SynosChatPreview';
 import { SynosFeatureGrid } from '@/components/SynosFeatureGrid';
 import { SynosComparison } from '@/components/SynosComparison';
 import { SynosTemplates } from '@/components/SynosTemplates';
+import { SynosAgentTemplates } from '@/components/SynosAgentTemplates';
+import { SynosBlogSection } from '@/components/SynosBlogSection';
+import { SynosWaitlistCTA } from '@/components/SynosWaitlistCTA';
 import { SynosEnterprise } from '@/components/SynosEnterprise';
 import { SynosPricing } from '@/components/SynosPricing';
 import { SynosFinalCTA } from '@/components/SynosFinalCTA';
@@ -23,16 +28,23 @@ export default function LandingPage() {
   return (
     <div className="synos-landing">
       <SynosNavbar onWaitlistClick={openWaitlist} />
-      <main>
+      <main className="synos-snap-container">
         <SynosHero onWaitlistClick={openWaitlist} onDemoClick={openDemo} />
+        {/* <SynosAppsSection /> */}
+        <SynosAppsSection2 />
+        <SynosAgentTemplates />
+        <SynosBlogSection />
+        <SynosWaitlistCTA onWaitlistClick={openWaitlist} />
+        {/* Sections below commented out — re-enable as needed.
         <SynosHowItWorks onWaitlistClick={openWaitlist} />
         <SynosChatPreview />
         <SynosFeatureGrid />
         <SynosComparison />
         <SynosTemplates onDemoClick={openDemo} />
-        {/* <SynosEnterprise onDemoClick={openDemo} /> */}
+        <SynosEnterprise onDemoClick={openDemo} />
         <SynosPricing onWaitlistClick={openWaitlist} />
         <SynosFinalCTA onWaitlistClick={openWaitlist} onDemoClick={openDemo} />
+        */}
       </main>
       <SynosFooter />
       <SynosWaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
@@ -55,11 +67,35 @@ export default function LandingPage() {
           margin: 0;
         }
 
+        html, body {
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+
+        html {
+          scroll-behavior: smooth;
+          scroll-snap-type: y mandatory;
+        }
+
         body {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
           -webkit-font-smoothing: antialiased;
           color: var(--text-primary);
           background: var(--bg);
+        }
+
+        .synos-snap-container {
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+
+        /* Hard section snap — every direct child <section> snaps to viewport top */
+        .synos-snap-container > section {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+          min-height: 100vh;
         }
 
         .synos-container {

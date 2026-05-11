@@ -1,0 +1,219 @@
+/* Announcement banner — Neo-Edo Cyber-Samurai design system.
+   Sharp corners, dark surface, monospace tag, accent-red link. */
+
+.synos-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 56px;
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  z-index: 100;
+  text-align: center;
+  border-bottom: 1px solid rgba(230, 61, 61, 0.4);
+}
+
+.synos-banner-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+/* Monospace serial tag at the head */
+.synos-banner-tag {
+  font-family: var(--font-pixel), 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: rgba(230, 61, 61, 0.15);
+  color: #E63D3D;
+  border: 1px solid rgba(230, 61, 61, 0.4);
+  white-space: nowrap;
+}
+
+.synos-banner-divider {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.synos-banner-message {
+  line-height: 1.4;
+}
+
+.synos-banner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: inherit;
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.synos-banner-link:hover {
+  background: currentColor;
+}
+
+.synos-banner-link:hover .synos-banner-message,
+.synos-banner-link:hover {
+  /* Invert: text becomes the bg color */
+}
+
+.synos-banner-link-arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.synos-banner-link:hover .synos-banner-link-arrow {
+  transform: translateX(2px);
+}
+
+/* Close — square, matches the modal aesthetic */
+.synos-banner-dismiss {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.synos-banner-dismiss:hover {
+  opacity: 1;
+  background: rgba(230, 61, 61, 0.15);
+  border-color: rgba(230, 61, 61, 0.5);
+}
+
+/* Style variants — all dark, accent differs */
+
+.synos-banner-accent {
+  background: #0F0303;
+  color: #ffffff;
+  border-bottom-color: rgba(230, 61, 61, 0.55);
+}
+.synos-banner-accent .synos-banner-tag {
+  background: rgba(230, 61, 61, 0.18);
+  color: #E63D3D;
+  border-color: rgba(230, 61, 61, 0.5);
+}
+.synos-banner-accent .synos-banner-link {
+  color: #E63D3D;
+}
+.synos-banner-accent .synos-banner-link:hover {
+  color: #0F0303;
+  background: #E63D3D;
+}
+
+.synos-banner-dark {
+  background: #0F0303;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+.synos-banner-dark .synos-banner-tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.synos-banner-dark .synos-banner-link {
+  color: #ffffff;
+}
+.synos-banner-dark .synos-banner-link:hover {
+  color: #0F0303;
+  background: #ffffff;
+}
+
+.synos-banner-success {
+  background: #0F0303;
+  color: #ffffff;
+  border-bottom-color: rgba(34, 197, 94, 0.55);
+}
+.synos-banner-success .synos-banner-tag {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+.synos-banner-success .synos-banner-link {
+  color: #22C55E;
+}
+.synos-banner-success .synos-banner-link:hover {
+  color: #0F0303;
+  background: #22C55E;
+}
+
+.synos-banner-warning {
+  background: #0F0303;
+  color: #ffffff;
+  border-bottom-color: rgba(245, 158, 11, 0.55);
+}
+.synos-banner-warning .synos-banner-tag {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.synos-banner-warning .synos-banner-link {
+  color: #F59E0B;
+}
+.synos-banner-warning .synos-banner-link:hover {
+  color: #0F0303;
+  background: #F59E0B;
+}
+
+.synos-banner-info {
+  background: #0F0303;
+  color: #ffffff;
+  border-bottom-color: rgba(59, 130, 246, 0.55);
+}
+.synos-banner-info .synos-banner-tag {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+  border-color: rgba(59, 130, 246, 0.4);
+}
+.synos-banner-info .synos-banner-link {
+  color: #3B82F6;
+}
+.synos-banner-info .synos-banner-link:hover {
+  color: #0F0303;
+  background: #3B82F6;
+}
+
+@media (max-width: 640px) {
+  .synos-banner {
+    font-size: 12px;
+    padding: 10px 40px;
+    gap: 8px;
+  }
+  .synos-banner-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  .synos-banner-divider {
+    display: none;
+  }
+  .synos-banner-link {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,118 @@
+
+.shine{
+    border: none;
+    border-radius: 9999px;
+    padding: 5px 20px;
+    background: black;
+    position:relative;
+    overflow: hidden;
+    color: #fff;
+}
+.shine:before{
+    content:'';
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rbga(255,255,255,0)30%,
+        rbga(255,255,255,.8),
+        rbga(255,255,255,0)70%
+    );
+}
+
+
+
+@keyframe shine{
+    0% {left: -100px}
+    20% {left: 100%}
+    100% {left: 100%}
+}
+
+/* .html-component-blurriness-hack {
+    zoom: 2;
+    scale: 0.5;
+    transform-origin: top left;
+} */
+
+/* .wallaper{
+    
+    background-image: url("/Kakashi-- Naruto.jpg");
+    background-position: center;
+    background-size: cover;
+} */
+
+.scrollbar {
+    scrollbar-width: thin !important;
+    scrollbar-color: #e0cbcb transparent !important;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 3px !important;
+    height: 3px !important;
+    background: transparent !important;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e0cbcb !important;
+    border-radius: 100vh !important;
+    border: none !important;
+    min-height: 24px !important;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c0a0b9 !important;
+  }
+
+  .scrollbar::-webkit-scrollbar-corner {
+    background: transparent !important;
+  }
+
+  .scrollbar::-webkit-scrollbar-button {
+    display: none !important;
+  }
+
+  /* Hidden-but-scrollable variant — used by phone screens that need to scroll
+     internal content (apps grid, agent list, About panel) without showing the
+     scrollbar UI. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Minimal thin scrollbar — only the thumb is visible, no track.
+     Used inside the phone screens where we want a subtle scroll indicator. */
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  }
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    min-height: 24px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
+  .thin-scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+  }

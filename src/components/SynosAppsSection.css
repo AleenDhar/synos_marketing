@@ -1,0 +1,839 @@
+/* SYNOS Apps Section — 3D phone + 2D apps overlay */
+
+.synos-apps-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0F0303;
+  color: #ffffff;
+  scroll-snap-align: start;
+}
+
+/* Background — same crimson cyberpunk theme as the hero */
+.synos-apps-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.synos-apps-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 140% 110% at 45% 30%,
+    #A82828 0%,
+    #6F1818 30%,
+    #4A0E0E 60%,
+    #2A0808 90%
+  );
+}
+
+.synos-apps-bg-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.synos-apps-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  /* Single column — phone is absolutely positioned, text occupies the right.
+     Left padding reserves the phone's column (~60vw) so they don't overlap. */
+  padding: 40px clamp(32px, 6vw, 96px) 60px 60vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* Text block — sits in the RIGHT column (phone is on the LEFT) */
+.synos-apps-text {
+  position: relative;
+  z-index: 3;
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 560px;
+  align-self: start;
+  padding-top: 80px;
+}
+
+.synos-apps-tag {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F58A52;
+  margin-bottom: 28px;
+}
+
+.synos-apps-tag-line {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: #F58A52;
+}
+
+.synos-apps-headline {
+  font-family: var(--font-display), 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: clamp(44px, 6vw, 80px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 28px;
+  text-transform: uppercase;
+}
+
+.synos-apps-sub {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 460px;
+  margin: 0 0 28px;
+}
+
+.synos-apps-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.synos-apps-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.synos-apps-bullet-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F04E23;
+  margin-top: 7px;
+  box-shadow: 0 0 8px 1px rgba(240, 78, 35, 0.6);
+}
+
+/* Counter + autoplay control — sits above the eyebrow */
+.synos-apps-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.synos-apps-counter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+}
+
+.synos-apps-counter-current {
+  font-size: 22px;
+  color: #E63D3D;
+  font-weight: 700;
+}
+
+.synos-apps-counter-divider {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.synos-apps-counter-total {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.synos-apps-autoplay {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.synos-apps-autoplay:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* NTE-style vertical rail — rounded pill on the left with numbered circles
+   + up/down arrows. Vertical centering is via framer-motion `y: '-50%'`
+   so the entrance x-animation doesn't clobber a CSS translate. */
+.synos-apps-rail {
+  position: absolute;
+  top: 50%;
+  left: clamp(16px, 2.4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 12px;
+  /* Dark glass — readable against any background, red only on the active item */
+  background: linear-gradient(180deg, rgba(20, 8, 10, 0.78) 0%, rgba(8, 2, 4, 0.82) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+/* Up / Down arrows — circular, sit at the ends of the rail */
+.synos-apps-rail-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.synos-apps-rail-arrow:hover {
+  background: rgba(230, 61, 61, 0.18);
+  border-color: rgba(230, 61, 61, 0.5);
+  color: #ffffff;
+}
+
+.synos-apps-rail-arrow:active {
+  transform: scale(0.94);
+}
+
+.synos-apps-rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Number circle — one per screen. Shows "01"…"06" in the center. */
+.synos-apps-rail-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.synos-apps-rail-avatar:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active state — solid red, glowing ring + slight scale-up (matches the NTE
+   reference where the focused avatar gets a colored halo). */
+.synos-apps-rail-avatar.is-active {
+  color: #ffffff;
+  background: rgba(230, 61, 61, 0.22);
+  border-color: #E63D3D;
+  box-shadow:
+    0 0 0 2px #E63D3D,
+    0 0 22px 4px rgba(230, 61, 61, 0.6),
+    inset 0 0 14px rgba(230, 61, 61, 0.3);
+  transform: scale(1.1);
+}
+
+/* Pulsing outer ring on the active circle */
+.synos-apps-rail-avatar.is-active::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 61, 61, 0.45);
+  animation: synos-apps-rail-pulse 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes synos-apps-rail-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.08); }
+}
+
+/* Phone block — absolutely positioned, anchored to the bottom-left of the
+   section so the hand image visually extends into the section's bottom-left
+   corner without being cropped by inner padding. Canvas height drives the
+   orthographic zoom, so a taller canvas = larger phone + hand. */
+.synos-apps-phone {
+  position: absolute;
+  left: 0;
+  /* Push the canvas down past the section bottom — the hand image inside has
+     transparent padding below the wrist, so anchoring at bottom:0 leaves a
+     visible gap. Negative bottom + extra height closes it. */
+  bottom: -8%;
+  width: 60vw;
+  height: 115%;
+  z-index: 2;
+}
+
+/* 2D apps overlay — positioned exactly over the phone's screen area */
+.synos-apps-phone-screen {
+  position: relative;
+  z-index: 2;
+  width: 256px;
+  height: 540px;
+  border-radius: 38px;
+  background: linear-gradient(180deg, #1A0606 0%, #2A0808 35%, #3A0B0B 70%, #1A0606 100%);
+  padding: 42px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(255, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.synos-apps-phone-statusbar {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+}
+
+.synos-apps-phone-statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 8px;
+}
+
+.synos-apps-phone-dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Notch */
+.synos-apps-phone-screen::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 22px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 5;
+}
+
+.synos-apps-phone-brand {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.synos-apps-phone-brand-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+}
+
+.synos-apps-phone-brand-name {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  font-family: var(--font-display), 'Archivo Black', 'Arial Black', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.synos-apps-phone-section-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.synos-apps-phone-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 8px;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.synos-apps-phone-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.synos-apps-phone-app-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.synos-apps-phone-app-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.synos-apps-phone-app-name {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  font-weight: 500;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.synos-apps-phone-dock-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* 3D scene wrapper */
+.phone-scene-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-scene-fallback-pulse {
+  width: 200px;
+  height: 400px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #2A0808 0%, #1A0606 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: phone-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes phone-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@media (max-width: 960px) {
+  .synos-apps-section {
+    min-height: auto;
+  }
+  .synos-apps-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    /* Mobile: kill the desktop 60vw left padding — the phone goes inline again */
+    padding: 80px 20px 32px !important;
+    gap: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+  /* Vertical rail → horizontal pill at the bottom on mobile */
+  .synos-apps-rail {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    margin-top: 16px;
+    width: auto;
+    align-self: center;
+  }
+  .synos-apps-rail-list {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .synos-apps-rail-arrow {
+    width: 32px;
+    height: 32px;
+  }
+  .synos-apps-rail-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .synos-apps-rail-avatar-num {
+    bottom: -4px;
+    right: -4px;
+    min-width: 16px;
+    height: 13px;
+    font-size: 7px;
+  }
+  .synos-apps-rail-avatar.is-active::after {
+    inset: -4px;
+  }
+  .synos-apps-text {
+    max-width: 100%;
+    padding-top: 0;
+    align-self: start;
+  }
+  .synos-apps-tag {
+    margin-bottom: 16px;
+    font-size: 11px;
+  }
+  .synos-apps-headline {
+    font-size: clamp(36px, 10vw, 56px);
+    margin-bottom: 16px;
+  }
+  .synos-apps-sub {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .synos-apps-bullets {
+    gap: 8px;
+  }
+  .synos-apps-bullet {
+    font-size: 13px;
+  }
+  .synos-apps-phone {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    height: 65vh;
+    min-height: 520px;
+    max-height: 720px;
+    width: 100%;
+    z-index: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .synos-apps-inner {
+    padding: 60px 16px 24px;
+  }
+  .synos-apps-headline {
+    font-size: clamp(32px, 11vw, 48px);
+  }
+  .synos-apps-bullets {
+    display: none;
+  }
+  .synos-apps-phone {
+    height: 60vh;
+    min-height: 460px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-scene-fallback-pulse {
+    animation: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Section 2 overrides — text + rail are removed, just the phone.
+   Phone is horizontally centered. Y-axis (bottom anchor) is kept.
+   ───────────────────────────────────────────────────────────── */
+/* Background image — replaces the gradient for section 2 only */
+#product .synos-apps-bg-gradient {
+  background: url('/synos-apps-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Disable the red-tinted noise overlay for this section */
+#product .synos-apps-bg-grain {
+  display: none;
+}
+
+/* Phone stays in its original absolute spot. Text blocks float around it. */
+#product .synos-apps-inner {
+  padding: 0;
+  position: relative;
+}
+
+/* Decorative kanji column — between the rail and the left content */
+.synos-apps-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.synos-apps-side-left {
+  left: clamp(96px, 9vw, 150px);
+  align-items: center;
+  gap: 14px;
+}
+
+.synos-apps-side-kanji {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: rgba(230, 61, 61, 0.9);
+}
+
+/* Grid wrapper is just a flow container — actual positioning is absolute */
+.synos-apps-grid {
+  display: contents;
+}
+
+/* Phone — restore original absolute positioning (centered, bottom-anchored, 60vw) */
+#product .synos-apps-phone {
+  position: absolute;
+  left: calc(50% - 30vw);
+  bottom: -8%;
+  width: 60vw;
+  height: 115%;
+  z-index: 2;
+  margin: 0;
+  max-width: none;
+  aspect-ratio: auto;
+}
+
+/* Section anchor — bottom-left text block. Sits below the kanji rail,
+   to the left of where the phone hand starts. */
+.synos-apps-anchor {
+  position: absolute;
+  bottom: clamp(40px, 6vh, 80px);
+  left: clamp(160px, 12vw, 220px);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: clamp(280px, 22vw, 360px);
+  pointer-events: none;
+}
+
+.synos-apps-anchor-eyebrow {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #E63D3D;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.synos-apps-anchor-headline {
+  font-family: var(--font-display), 'Archivo Black', sans-serif;
+  font-size: clamp(34px, 3.4vw, 48px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.synos-apps-anchor-sub {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  max-width: 360px;
+}
+
+@media (max-width: 960px) {
+  .synos-apps-anchor {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 24px auto 0;
+    max-width: 90%;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Right info panel — describes the active screen + CTA to interact */
+.synos-apps-content-right {
+  position: absolute;
+  top: 50%;
+  right: clamp(32px, 5vw, 100px);
+  transform: translateY(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: clamp(260px, 22vw, 360px);
+  gap: 20px;
+}
+
+.synos-apps-content-right-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #E63D3D;
+  text-transform: uppercase;
+}
+
+/* Instructions list — numbered action steps for the user */
+.synos-apps-instructions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 320px;
+}
+
+.synos-apps-instruction {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.synos-apps-instruction-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(230, 61, 61, 0.5);
+  background: rgba(230, 61, 61, 0.12);
+  color: #E63D3D;
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.synos-apps-instruction-text {
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  padding-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .synos-apps-content-right {
+    max-width: 240px;
+    gap: 14px;
+  }
+  .synos-apps-content-right-title {
+    font-size: clamp(22px, 3vw, 30px);
+  }
+}
+
+@media (max-width: 960px) {
+  .synos-apps-side-left {
+    display: none;
+  }
+  .synos-apps-content-right {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin: 32px auto 0;
+    max-width: 90%;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Mobile — shrink the rail */
+@media (max-width: 768px) {
+  .synos-apps-rail {
+    left: 12px;
+    gap: 8px;
+    padding: 10px 8px;
+  }
+  .synos-apps-rail-arrow,
+  .synos-apps-rail-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+  .synos-apps-rail-list {
+    gap: 8px;
+  }
+}
+
+/* Phone layout rules are defined above in the #product grid section */

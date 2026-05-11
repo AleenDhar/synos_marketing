@@ -3,18 +3,21 @@
   display: flex;
   align-items: center;
   background: transparent;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  pointer-events: none;
+}
+
+.synos-navbar > * {
+  pointer-events: auto;
 }
 
 .synos-nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
   width: 100%;
+  padding: 0 clamp(32px, 6vw, 96px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,82 +26,211 @@
 .synos-nav-left {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 56px;
 }
 
 .synos-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   text-decoration: none;
 }
 
-.synos-logo-icon {
-  border-radius: 6px;
+.synos-logo-mark {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  margin-top: -8px;
 }
 
 .synos-logo-text {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text-primary);
+  font-family: var(--font-brand), 'Anton', 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .synos-nav-links {
   display: flex;
   list-style: none;
   gap: 36px;
+  margin: 0;
+  padding: 0;
 }
 
 .synos-nav-links a {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
 
 .synos-nav-links a:hover {
-  color: var(--text-primary);
+  color: #ffffff;
+}
+
+/* When the navbar is over a [data-navbar-theme="light"] section, flip the
+   LEFT side text (logo + nav links) to dark so it's readable on cream.
+   Right side (serial + CTA) stays as-is. */
+.synos-logo-text,
+.synos-nav-links a {
+  transition: color 0.25s ease;
+}
+
+.synos-navbar.nav-on-light .synos-logo-text {
+  color: #0F0303;
+}
+
+.synos-navbar.nav-on-light .synos-nav-links a {
+  color: rgba(15, 3, 3, 0.72);
+}
+
+.synos-navbar.nav-on-light .synos-nav-links a:hover {
+  color: #0F0303;
 }
 
 .synos-nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
-.synos-login-link {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
+/* Cyberpunk serial tag — sits next to the CTA */
+.synos-nav-serial {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  user-select: none;
 }
 
-.synos-login-link:hover {
-  color: var(--text-primary);
-}
-
-.synos-btn-get-started {
-  background: var(--text-primary);
-  color: var(--bg);
-  padding: 10px 22px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
+.synos-nav-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #E63D3D;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 0;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.15s ease;
+  transform-origin: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.synos-btn-get-started:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+.synos-nav-cta:hover {
+  transform: scale(0.94);
+}
+
+.synos-nav-cta:active {
+  transform: scale(0.92);
+}
+
+.synos-nav-cta:focus-visible {
+  outline: none;
+}
+
+.synos-nav-cta:focus-visible .synos-nav-cta-corner {
+  opacity: 1;
+}
+
+/* Label sits above the corner overlay */
+.synos-nav-cta-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Black bracket-style corner accents — same pattern as the modal frame.
+   Hidden by default, fade in on hover. */
+.synos-nav-cta-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.synos-nav-cta-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.synos-nav-cta-corner-tl { top: -7px; left: -7px;    border-right: none; border-bottom: none; transform: translate(-5px, -5px); }
+.synos-nav-cta-corner-tr { top: -7px; right: -7px;   border-left: none;  border-bottom: none; transform: translate( 5px, -5px); }
+.synos-nav-cta-corner-bl { bottom: -7px; left: -7px;  border-right: none; border-top: none;    transform: translate(-5px,  5px); }
+.synos-nav-cta-corner-br { bottom: -7px; right: -7px; border-left: none;  border-top: none;    transform: translate( 5px,  5px); }
+
+.synos-nav-cta:hover .synos-nav-cta-corner {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.synos-nav-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 8px;
+  background: rgba(15, 3, 3, 0.45);
+  border-radius: 0;
+  padding-left: 1px;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .synos-nav-serial {
+    display: none;
+  }
+}
+
+/* Intermediate widths — drop the serial tag before things start to crowd. */
+@media (max-width: 1100px) {
+  .synos-nav-serial {
+    display: none;
+  }
+}
+
+/* Tighter nav at narrower widths */
+@media (max-width: 960px) {
+  .synos-nav-left {
+    gap: 32px;
+  }
+  .synos-nav-links {
+    gap: 22px;
+  }
+  .synos-nav-links a {
+    font-size: 11px;
+  }
+  .synos-nav-cta {
+    padding: 10px 18px;
+  }
 }
 
 @media (max-width: 768px) {
   .synos-nav-links {
     display: none;
+  }
+  .synos-nav-container {
+    padding: 0 20px;
   }
 }

@@ -130,22 +130,25 @@ export const SynosTracker: React.FC = () => {
   useEffect(() => {
     sessionId.current = generateSessionId();
 
-    // Fetch IP + geolocation
-    fetch('https://ipapi.co/json/')
-      .then(r => r.json())
-      .then(data => {
-        geoData.current = {
-          ip: data.ip,
-          country: data.country_name,
-          city: data.city,
-          region: data.region,
-        };
-        // Initial flush with geo data
-        flush();
-      })
-      .catch(() => {
-        flush();
-      });
+    // Fetch IP + geolocation (production only — ipapi rate-limits localhost)
+    if (process.env.NODE_ENV !== 'production') {
+      flush();
+    } else {
+      fetch('https://ipapi.co/json/')
+        .then(r => r.json())
+        .then(data => {
+          geoData.current = {
+            ip: data.ip,
+            country: data.country_name,
+            city: data.city,
+            region: data.region,
+          };
+          flush();
+        })
+        .catch(() => {
+          flush();
+        });
+    }
 
     // Track clicks
     const handleClick = (e: MouseEvent) => {
@@ -195,10 +198,11 @@ export const SynosTracker: React.FC = () => {
       });
     }, 500);
 
-    // Periodic flush every 15 seconds
+    // Periodic flush — once per minute is enough to capture activity without
+    // keeping the network indicator constantly busy on slow mobile connections.
     const flushInterval = setInterval(() => {
       flush();
-    }, 15000);
+    }, 60000);
 
     // Flush on page leave
     const handleVisibilityChange = () => {

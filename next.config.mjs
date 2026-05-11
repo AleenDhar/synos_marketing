@@ -2,7 +2,9 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your Next.js config here
+  // Disable React Strict Mode to prevent dev-mode double-mounting that breaks R3F's
+  // <primitive object={scene}> attachments (causes the iPhone to render then disappear).
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
