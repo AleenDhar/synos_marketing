@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
 import './SynosNavbar.css';
 
 interface SynosNavbarProps {
@@ -9,6 +10,16 @@ interface SynosNavbarProps {
 }
 
 export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
   // When a section with [data-navbar-theme="light"] is in view, the left
   // side of the navbar (logo + nav links) flips to dark text so it stays
   // readable against the light background.
@@ -65,6 +76,45 @@ export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => 
             </span>
             <span className="synos-nav-cta-label">START HIRING</span>
           </button>
+
+          {/* Hamburger — visible on mobile only */}
+          <button
+            type="button"
+            className="synos-nav-burger"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile overlay menu */}
+      <div
+        className={`synos-nav-mobile-menu ${menuOpen ? 'is-open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <ul className="synos-nav-mobile-links">
+          <li><Link href="/#product" onClick={() => setMenuOpen(false)}>PRODUCT</Link></li>
+          <li><Link href="/#agent-templates" onClick={() => setMenuOpen(false)}>AGENTS</Link></li>
+          <li><Link href="/blog" onClick={() => setMenuOpen(false)}>BLOG</Link></li>
+        </ul>
+
+        <button
+          type="button"
+          className="synos-nav-mobile-cta"
+          onClick={() => {
+            setMenuOpen(false);
+            onWaitlistClick();
+          }}
+        >
+          START HIRING
+        </button>
+
+        <div className="synos-nav-mobile-footer">
+          <span className="synos-nav-mobile-serial">SYS_001 · 05.10.X</span>
+          <span className="synos-nav-mobile-kanji">未来を、仕組みに。</span>
         </div>
       </div>
     </nav>

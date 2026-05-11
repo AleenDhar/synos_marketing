@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Archivo_Black, Anton, VT323 } from 'next/font/google'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import type { Media } from '@/payload-types'
+import type { AnnouncementBanner, Media } from '@/payload-types'
 import { SynosAnnouncementBanner } from '@/components/SynosAnnouncementBanner'
 import { SynosFloatingPromo } from '@/components/SynosFloatingPromo'
 import { SynosLoadingScreen } from '@/components/SynosLoadingScreen'
@@ -70,12 +70,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   let siteTitle = 'SynosAI'
-  let banner: Awaited<ReturnType<Awaited<ReturnType<typeof getPayload>>['findGlobal']>> | null = null
+  let banner: AnnouncementBanner | null = null
   try {
     const payload = await getPayload({ config })
     const [siteSettings, announcementBanner] = await Promise.all([
       payload.findGlobal({ slug: 'site-settings' }),
-      payload.findGlobal({ slug: 'announcement-banner' }).catch(() => null),
+      payload
+        .findGlobal({ slug: 'announcement-banner' })
+        .catch(() => null) as Promise<AnnouncementBanner | null>,
     ])
     siteTitle = siteSettings?.siteTitle ?? 'SynosAI'
     banner = announcementBanner

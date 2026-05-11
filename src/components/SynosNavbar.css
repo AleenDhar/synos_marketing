@@ -226,9 +226,142 @@
   }
 }
 
+/* ── Hamburger button (hidden on desktop) ────────────────── */
+.synos-nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.synos-nav-burger:hover {
+  background: rgba(230, 61, 61, 0.15);
+  border-color: rgba(230, 61, 61, 0.5);
+}
+
+/* When over a light section, flip burger to dark */
+.synos-navbar.nav-on-light .synos-nav-burger {
+  color: #0F0303;
+  border-color: rgba(15, 3, 3, 0.2);
+}
+
+/* ── Mobile overlay menu (hidden on desktop) ─────────────── */
+.synos-nav-mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 3, 3, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 32px;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.synos-nav-mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.synos-nav-mobile-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.synos-nav-mobile-links a {
+  font-family: var(--font-display), 'Archivo Black', sans-serif;
+  font-size: clamp(28px, 9vw, 44px);
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+  display: inline-block;
+}
+
+.synos-nav-mobile-links a:hover {
+  color: #E63D3D;
+}
+
+.synos-nav-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background: #E63D3D;
+  color: #ffffff;
+  border: 1px solid #E63D3D;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  margin-top: 8px;
+}
+
+.synos-nav-mobile-cta:active {
+  background: #FF4F4F;
+}
+
+.synos-nav-mobile-footer {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel), 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.synos-nav-mobile-kanji {
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(230, 61, 61, 0.7);
+  text-transform: none;
+}
+
+/* ── Mobile breakpoints ──────────────────────────────────── */
+
 @media (max-width: 768px) {
   .synos-nav-links {
     display: none;
+  }
+  .synos-nav-serial {
+    display: none;
+  }
+  /* Hide the desktop CTA on mobile — the mobile menu has its own */
+  .synos-nav-cta {
+    display: none;
+  }
+  .synos-nav-burger {
+    display: inline-flex;
   }
   .synos-nav-container {
     padding: 0 20px;

@@ -825,21 +825,35 @@
    ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  /* Section becomes natural height — stack everything */
+  /* Section keeps full viewport height so the phone can anchor to the bottom */
   #product .synos-apps-section,
   #product.synos-apps-section {
-    min-height: auto;
+    min-height: 100vh;
     height: auto;
   }
   #product .synos-apps-inner {
     position: relative;
-    padding: 96px 20px 48px;
+    padding: 96px 0 0;
     height: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
+    overflow: hidden;
+  }
+  #product .synos-apps-anchor {
+    padding: 0 24px;
+  }
+  /* Hide the "HOW SYNOS WORKS" eyebrow + sub on mobile — keep only the
+     headline so the section stays compact. */
+  #product .synos-apps-anchor .synos-apps-anchor-eyebrow,
+  #product .synos-apps-anchor .synos-apps-anchor-sub {
+    display: none;
+  }
+  /* Hide the "TRY IT" instructions panel on mobile */
+  #product .synos-apps-content-right {
+    display: none;
   }
 
   /* Hide decorative side kanji on mobile (no room) */
@@ -874,16 +888,23 @@
     inset: -4px;
   }
 
-  /* Phone — now a normal flex item, full-width, centered */
+  /* Phone — pinned to the bottom of the section so the hand visually connects
+     with the legs in the samurai bg. Full viewport width, slightly past the
+     bottom edge for the cinematic crop. */
   #product .synos-apps-phone {
     position: relative;
     left: auto;
     bottom: auto;
-    width: 100%;
-    max-width: 480px;
+    /* Push to the bottom of the flex column and well past the section edge */
+    margin-top: auto;
+    margin-bottom: -16vh;
+    width: 140vw;
+    max-width: none;
     aspect-ratio: 1536 / 1024;
     height: auto;
-    margin: 0 auto;
+    /* Horizontal centering since width > viewport */
+    margin-left: -20vw;
+    margin-right: -20vw;
   }
 
   /* Anchor text — below the phone, centered */
