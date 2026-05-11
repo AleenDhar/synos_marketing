@@ -825,53 +825,66 @@
    ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  /* Section keeps full viewport height so the phone can anchor to the bottom */
+  /* Lock the section to a single viewport — phone fills it as a full-bleed bg */
   #product .synos-apps-section,
   #product.synos-apps-section {
     min-height: 100vh;
-    height: auto;
+    height: 100vh;
   }
   #product .synos-apps-inner {
     position: relative;
-    padding: 96px 0 0;
-    height: auto;
+    padding: 0;
+    height: 100vh;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
     overflow: hidden;
+    display: block;
   }
-  #product .synos-apps-anchor {
-    padding: 0 24px;
-  }
-  /* Hide the "HOW SYNOS WORKS" eyebrow + sub on mobile — keep only the
-     headline so the section stays compact. */
+
+  /* Hide decorative side kanji + instruction panel + anchor eyebrow/sub */
+  .synos-apps-side-left,
+  #product .synos-apps-content-right,
   #product .synos-apps-anchor .synos-apps-anchor-eyebrow,
   #product .synos-apps-anchor .synos-apps-anchor-sub {
     display: none;
   }
-  /* Hide the "TRY IT" instructions panel on mobile */
-  #product .synos-apps-content-right {
-    display: none;
+
+  /* PHONE — absolute, fills the viewport. The inner Phone2D frame is
+     oversized so the hand image effectively object-fit: covers the viewport. */
+  #product .synos-apps-phone {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  #product .phone-shell {
+    align-items: center;
+    justify-content: center;
+  }
+  #product .phone-shell-frame {
+    /* 100vh tall × aspect-ratio gives a width wider than viewport — center it.
+       This mimics object-fit: cover with the screen overlay still tracking
+       the same percentage offset within the frame. */
+    width: 160vh;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    aspect-ratio: 1536 / 1024;
   }
 
-  /* Hide decorative side kanji on mobile (no room) */
-  .synos-apps-side-left {
-    display: none;
-  }
-
-  /* Vertical rail → horizontal pill at the top */
+  /* RAIL — absolute, horizontal pill at the top center */
   #product .synos-apps-rail {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    position: absolute;
+    top: 88px;
+    left: 50%;
+    transform: translateX(-50%);
     flex-direction: row;
     gap: 6px;
     padding: 6px 10px;
     border-radius: 999px;
-    align-self: center;
+    z-index: 5;
+    align-self: auto;
   }
   #product .synos-apps-rail-list {
     flex-direction: row;
@@ -879,69 +892,37 @@
   }
   #product .synos-apps-rail-arrow,
   #product .synos-apps-rail-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 12px;
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
   }
-  /* Trim the active-circle outer halo so the row stays tight */
   #product .synos-apps-rail-avatar.is-active::after {
     inset: -4px;
   }
 
-  /* Phone — pinned to the bottom of the section so the hand visually connects
-     with the legs in the samurai bg. Full viewport width, slightly past the
-     bottom edge for the cinematic crop. */
-  #product .synos-apps-phone {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    /* Push to the bottom of the flex column and well past the section edge */
-    margin-top: auto;
-    margin-bottom: -16vh;
-    width: 140vw;
-    max-width: none;
-    aspect-ratio: 1536 / 1024;
-    height: auto;
-    /* Horizontal centering since width > viewport */
-    margin-left: -20vw;
-    margin-right: -20vw;
-  }
-
-  /* Anchor text — below the phone, centered */
+  /* HEADLINE — absolute, centered below the rail */
   #product .synos-apps-anchor,
   .synos-apps-anchor {
-    position: relative;
+    position: absolute;
+    top: 158px;
+    left: 16px;
+    right: 16px;
     bottom: auto;
-    left: auto;
-    max-width: 100%;
-    align-items: center;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin: 0;
-  }
-  .synos-apps-anchor-headline {
-    font-size: clamp(28px, 8vw, 40px);
-  }
-  .synos-apps-anchor-sub {
-    font-size: 14px;
-    max-width: 100%;
-  }
-
-  /* Right info / instructions — below the anchor */
-  #product .synos-apps-content-right,
-  .synos-apps-content-right {
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: none;
-    max-width: 100%;
     align-items: center;
-    text-align: left;
-    width: 100%;
-    margin: 0;
+    max-width: none;
   }
-  .synos-apps-instructions {
-    max-width: 100%;
-    width: 100%;
+  #product .synos-apps-anchor-headline {
+    font-size: clamp(16px, 4.4vw, 22px);
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+  }
+  #product .synos-apps-anchor-headline br {
+    display: none;
   }
 }
 

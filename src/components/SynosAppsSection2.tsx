@@ -27,7 +27,7 @@ const SCREEN_INFO: Record<PhoneScreen, ScreenContent> = {
   agents: {
     anchorHeadline: (
       <>
-        CHAT WITH
+        CHAT WITH{' '}
         <br />
         YOUR AI TEAM.
       </>
@@ -42,7 +42,7 @@ const SCREEN_INFO: Record<PhoneScreen, ScreenContent> = {
   slack: {
     anchorHeadline: (
       <>
-        SHOW UP WHERE
+        SHOW UP WHERE{' '}
         <br />
         WORK HAPPENS.
       </>
@@ -57,7 +57,7 @@ const SCREEN_INFO: Record<PhoneScreen, ScreenContent> = {
   apps: {
     anchorHeadline: (
       <>
-        GIVE THEM TOOLS.
+        GIVE THEM TOOLS.{' '}
         <br />
         1,000+ OF THEM.
       </>
@@ -72,7 +72,7 @@ const SCREEN_INFO: Record<PhoneScreen, ScreenContent> = {
   device: {
     anchorHeadline: (
       <>
-        THEY USE THE WEB
+        THEY USE THE WEB{' '}
         <br />
         LIKE YOU DO.
       </>
@@ -87,7 +87,7 @@ const SCREEN_INFO: Record<PhoneScreen, ScreenContent> = {
   build: {
     anchorHeadline: (
       <>
-        BUILD APPS BY
+        BUILD APPS BY{' '}
         <br />
         TALKING TO THEM.
       </>
