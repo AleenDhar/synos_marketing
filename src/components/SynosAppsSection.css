@@ -21,13 +21,11 @@
 .synos-apps-bg-gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 140% 110% at 45% 30%,
-    #A82828 0%,
-    #6F1818 30%,
-    #4A0E0E 60%,
-    #2A0808 90%
-  );
+  background: radial-gradient(ellipse 140% 110% at 45% 30%,
+      #A82828 0%,
+      #6F1818 30%,
+      #4A0E0E 60%,
+      #2A0808 90%);
 }
 
 .synos-apps-bg-grain {
@@ -294,23 +292,23 @@
 }
 
 @keyframes synos-apps-rail-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50%      { opacity: 1;    transform: scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
 }
 
-/* Phone block — absolutely positioned, anchored to the bottom-left of the
-   section so the hand image visually extends into the section's bottom-left
-   corner without being cropped by inner padding. Canvas height drives the
-   orthographic zoom, so a taller canvas = larger phone + hand. */
+/* Phone block — generic rule (legacy; the active #product section overrides
+   this entirely with viewport-height-based positioning further down). */
 .synos-apps-phone {
   position: absolute;
-  left: 0;
-  /* Push the canvas down past the section bottom — the hand image inside has
-     transparent padding below the wrist, so anchoring at bottom:0 leaves a
-     visible gap. Negative bottom + extra height closes it. */
-  bottom: -8%;
-  width: 60vw;
-  height: 115%;
   z-index: 2;
 }
 
@@ -489,14 +487,22 @@
 }
 
 @keyframes phone-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @media (max-width: 960px) {
   .synos-apps-section {
     min-height: auto;
   }
+
   .synos-apps-inner {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
@@ -506,6 +512,7 @@
     height: auto;
     min-height: 100vh;
   }
+
   /* Vertical rail → horizontal pill at the bottom on mobile */
   .synos-apps-rail {
     position: relative;
@@ -520,18 +527,22 @@
     width: auto;
     align-self: center;
   }
+
   .synos-apps-rail-list {
     flex-direction: row;
     gap: 10px;
   }
+
   .synos-apps-rail-arrow {
     width: 32px;
     height: 32px;
   }
+
   .synos-apps-rail-avatar {
     width: 40px;
     height: 40px;
   }
+
   .synos-apps-rail-avatar-num {
     bottom: -4px;
     right: -4px;
@@ -539,57 +550,55 @@
     height: 13px;
     font-size: 7px;
   }
+
   .synos-apps-rail-avatar.is-active::after {
     inset: -4px;
   }
+
   .synos-apps-text {
     max-width: 100%;
     padding-top: 0;
     align-self: start;
   }
+
   .synos-apps-tag {
     margin-bottom: 16px;
     font-size: 11px;
   }
+
   .synos-apps-headline {
     font-size: clamp(36px, 10vw, 56px);
     margin-bottom: 16px;
   }
+
   .synos-apps-sub {
     font-size: 14px;
     margin-bottom: 16px;
   }
+
   .synos-apps-bullets {
     gap: 8px;
   }
+
   .synos-apps-bullet {
     font-size: 13px;
   }
-  .synos-apps-phone {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    height: 65vh;
-    min-height: 520px;
-    max-height: 720px;
-    width: 100%;
-    z-index: auto;
-  }
+
+  /* Legacy mobile rules removed — #product section has its own dedicated
+     mobile rules in a later @media block. */
 }
 
 @media (max-width: 480px) {
   .synos-apps-inner {
     padding: 60px 16px 24px;
   }
+
   .synos-apps-headline {
     font-size: clamp(32px, 11vw, 48px);
   }
+
   .synos-apps-bullets {
     display: none;
-  }
-  .synos-apps-phone {
-    height: 60vh;
-    min-height: 460px;
   }
 }
 
@@ -620,6 +629,11 @@
 #product .synos-apps-inner {
   padding: 0;
   position: relative;
+  /* Explicit height so the phone's bottom-anchored absolute positioning
+     (bottom: -8vh) is computed against the bottom of the viewport, not 0. */
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Decorative kanji column — between the rail and the left content */
@@ -654,28 +668,30 @@
   display: contents;
 }
 
-/* Phone — restore original absolute positioning (centered, bottom-anchored, 60vw) */
+/* Phone — sized by VIEWPORT HEIGHT so it scales consistently from medium
+   laptops up to ultrawides. Width is derived from the image aspect-ratio.
+   The frame is shifted so the phone SCREEN (not the frame geometry) lands
+   on the viewport horizontal center.
+
+   Math: height 110vh → width 165vh. The screen inside the frame sits at
+   (--screen-left + --screen-width/2) = 38.3% + 11.35% = 49.65% of frame width
+                                      = 0.4965 × 165vh ≈ 81.92vh from frame left.
+   To put that point at viewport 50%, frame_left = 50% − 81.92vh. */
 #product .synos-apps-phone {
   position: absolute;
-  left: calc(50% - 30vw);
-  bottom: -8%;
-  width: 60vw;
-  height: 115%;
+  /* Fixed pixel distance from the section bottom — phone always sits exactly
+     this far past the bottom edge regardless of viewport height. */
+  bottom: -60px;
+  left: 50%;
+  /* margin-left = -(screen-center offset) so the phone SCREEN lands on the
+     viewport center. Screen center = 49.65% of frame width = 0.4965 × 148.5vh
+     ≈ 73.73vh (since frame width = height × 1.5 = 99 × 1.5 = 148.5vh). */
+  margin-left: -73.73vh;
+  margin-right: 0;
+  height: 99vh;
+  aspect-ratio: 1536 / 1024;
+  width: auto;
   z-index: 2;
-  margin: 0;
-  max-width: none;
-  aspect-ratio: auto;
-}
-
-/* Medium screens — laptops, tablets in landscape, narrow desktops.
-   Bump the phone up so it doesn't look lost. */
-@media (min-width: 769px) and (max-width: 1280px) {
-  #product .synos-apps-phone {
-    width: 110vw;
-    left: calc(50% - 55vw);
-    height: 145%;
-    bottom: -22%;
-  }
 }
 
 /* Section anchor — bottom-left text block. Sits below the kanji rail,
@@ -808,6 +824,7 @@
     max-width: 240px;
     gap: 14px;
   }
+
   .synos-apps-content-right-title {
     font-size: clamp(22px, 3vw, 30px);
   }
@@ -817,6 +834,7 @@
   .synos-apps-side-left {
     display: none;
   }
+
   .synos-apps-content-right {
     position: relative;
     top: auto;
@@ -835,13 +853,16 @@
    On phones we stack everything vertically.
    ──────────────────────────────────────────────────────────── */
 
-@media (max-width: 768px) {
+/* iPad portrait, tablets, narrow desktops all use the mobile full-bleed layout */
+@media (max-width: 1024px) {
+
   /* Lock the section to a single viewport — phone fills it as a full-bleed bg */
   #product .synos-apps-section,
   #product.synos-apps-section {
     min-height: 100vh;
     height: 100vh;
   }
+
   #product .synos-apps-inner {
     position: relative;
     padding: 0;
@@ -851,11 +872,11 @@
     display: block;
   }
 
-  /* Hide decorative side kanji + instruction panel + anchor eyebrow/sub */
+  /* Hide decorative side kanji + instruction panel + the entire anchor block */
   .synos-apps-side-left,
   #product .synos-apps-content-right,
-  #product .synos-apps-anchor .synos-apps-anchor-eyebrow,
-  #product .synos-apps-anchor .synos-apps-anchor-sub {
+  #product .synos-apps-anchor,
+  .synos-apps-anchor {
     display: none;
   }
 
@@ -867,12 +888,19 @@
     margin: 0;
     width: 100%;
     height: 100%;
+    /* Reset desktop-rule properties so the container fully fills the section */
+    aspect-ratio: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
   }
+
   #product .phone-shell {
     align-items: flex-end;
     justify-content: center;
   }
+
   #product .phone-shell-frame {
     /* Frame is wider than viewport (cover-like) and translated down so the
        hand sits lower in the viewport — more visible, less cropped. */
@@ -889,7 +917,7 @@
      transform: translateX(-50%) so framer-motion's transform doesn't override. */
   #product .synos-apps-rail {
     position: absolute;
-    top: 76px;
+    top: 40px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -903,16 +931,19 @@
     align-self: auto;
     transform: none !important;
   }
+
   #product .synos-apps-rail-list {
     flex-direction: row;
     gap: 8px;
   }
+
   #product .synos-apps-rail-arrow,
   #product .synos-apps-rail-avatar {
     width: 34px;
     height: 34px;
     font-size: 11px;
   }
+
   #product .synos-apps-rail-avatar.is-active::after {
     inset: -4px;
   }
@@ -922,7 +953,7 @@
   #product .synos-apps-anchor,
   .synos-apps-anchor {
     position: absolute;
-    top: 132px;
+    top: 112px;
     left: 0;
     right: 0;
     bottom: auto;
@@ -934,14 +965,27 @@
     max-width: none;
     transform: none !important;
   }
+
   #product .synos-apps-anchor-headline {
     font-size: clamp(16px, 4.4vw, 22px);
     line-height: 1.2;
     margin: 0;
     white-space: nowrap;
   }
+
   #product .synos-apps-anchor-headline br {
     display: none;
+  }
+}
+
+/* Medium screens (tablet portrait, iPad) — bump the phone+hand size so it
+   doesn't look tiny against the taller viewport. Overrides the mobile
+   frame size above for the 600–1024px band. */
+@media (min-width: 600px) and (max-width: 1024px) {
+  #product .phone-shell-frame {
+    width: 240vh;
+    height: 150vh;
+    transform: translateY(20vh);
   }
 }
 

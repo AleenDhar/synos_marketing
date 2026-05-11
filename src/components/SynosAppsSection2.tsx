@@ -177,8 +177,8 @@ export const SynosAppsSection2: React.FC = () => {
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  aria-label={SCREEN_INFO[key].label}
-                  title={SCREEN_INFO[key].label}
+                  aria-label={key}
+                  title={key}
                   onClick={() => pick(key)}
                   className={`synos-apps-rail-avatar ${isActive ? 'is-active' : ''}`}
                 >

@@ -32,7 +32,13 @@ export const SynosBlogSection: React.FC = () => {
               THE SYNOS TEAM.
             </h2>
             <Link href="/blog" className="synos-blog-section-all">
-              <span>All dispatches</span>
+              <span className="synos-blog-section-all-corners" aria-hidden="true">
+                <span className="synos-blog-section-all-corner synos-blog-section-all-corner-tl" />
+                <span className="synos-blog-section-all-corner synos-blog-section-all-corner-tr" />
+                <span className="synos-blog-section-all-corner synos-blog-section-all-corner-bl" />
+                <span className="synos-blog-section-all-corner synos-blog-section-all-corner-br" />
+              </span>
+              <span className="synos-blog-section-all-label">All dispatches</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>

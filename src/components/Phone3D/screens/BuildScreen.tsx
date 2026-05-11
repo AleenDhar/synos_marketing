@@ -373,7 +373,6 @@ export default function BuildScreen() {
           lineHeight: 1.5,
           color: '#C9D1D9',
           overflow: 'hidden',
-          position: 'absolute',
           borderTop: '1px solid rgba(255,255,255,0.06)',
         }}
       >

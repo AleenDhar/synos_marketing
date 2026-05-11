@@ -21,11 +21,14 @@
 .synos-blog-section-bg-gradient {
   position: absolute;
   inset: 0;
+  /* Same crimson radial as the hero — brighter, more saturated than the
+     dark dispatch theme we had before. */
   background: radial-gradient(
-    ellipse 130% 90% at 50% 0%,
-    #4A0E0E 0%,
-    #2A0808 45%,
-    #0F0303 90%
+    ellipse 140% 110% at 45% 30%,
+    #A82828 0%,
+    #6F1818 30%,
+    #4A0E0E 60%,
+    #2A0808 90%
   );
 }
 
@@ -88,25 +91,68 @@
 }
 
 .synos-blog-section-all {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 18px;
-  background: transparent;
-  border: 1px solid rgba(230, 61, 61, 0.5);
+  gap: 10px;
+  padding: 12px 28px;
+  background: #E63D3D;
+  border: 1px solid #E63D3D;
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  transform-origin: center;
   flex-shrink: 0;
 }
 
 .synos-blog-section-all:hover {
-  background: #E63D3D;
-  border-color: #E63D3D;
+  transform: scale(0.94);
+}
+
+.synos-blog-section-all:active {
+  transform: scale(0.92);
+}
+
+.synos-blog-section-all-label,
+.synos-blog-section-all svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* White bracket corners — same pattern as the navbar CTA */
+.synos-blog-section-all-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.synos-blog-section-all-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.synos-blog-section-all-corner-tl { top: -7px; left: -7px;    border-right: none; border-bottom: none; transform: translate(-5px, -5px); }
+.synos-blog-section-all-corner-tr { top: -7px; right: -7px;   border-left: none;  border-bottom: none; transform: translate( 5px, -5px); }
+.synos-blog-section-all-corner-bl { bottom: -7px; left: -7px;  border-right: none; border-top: none;    transform: translate(-5px,  5px); }
+.synos-blog-section-all-corner-br { bottom: -7px; right: -7px; border-left: none;  border-top: none;    transform: translate( 5px,  5px); }
+
+.synos-blog-section-all:hover .synos-blog-section-all-corner,
+.synos-blog-section-all:focus-visible .synos-blog-section-all-corner {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.synos-blog-section-all:focus-visible {
+  outline: none;
 }
 
 .synos-blog-section-all svg {
@@ -130,15 +176,18 @@
 
 .synos-blog-section-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  background: rgba(15, 3, 3, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
 .synos-blog-section-card:hover {
-  background: rgba(230, 61, 61, 0.06);
-  border-color: rgba(230, 61, 61, 0.4);
+  background: rgba(15, 3, 3, 0.85);
+  border-color: rgba(230, 61, 61, 0.7);
   transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(230, 61, 61, 0.2);
 }
 
 .synos-blog-section-card-link {

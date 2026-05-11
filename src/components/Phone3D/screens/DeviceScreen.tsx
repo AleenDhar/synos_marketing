@@ -7,8 +7,6 @@ import {
   FileText,
   FolderOpen,
   Terminal,
-  Search,
-  MessageCircle,
   MoreHorizontal,
   Linkedin,
   Check,
@@ -216,68 +214,6 @@ function BrowserView({ onConnect, connectSent }: { onConnect: () => void; connec
           .linkedin-scroll::-webkit-scrollbar { width: 0 !important; display: none !important; }
           .linkedin-scroll { scrollbar-width: none !important; }
         `}</style>
-
-        {/* Top bar: viewer avatar + search + message */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            padding: '6px 8px',
-            background: '#1B1F23',
-            borderBottom: '1px solid rgba(255,255,255,0.05)',
-          }}
-        >
-          {/* Viewer's own avatar (top-left) */}
-          <div
-            style={{
-              width: 16,
-              height: 16,
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #E0322B 0%, #FF3D7F 100%)',
-              flexShrink: 0,
-            }}
-          />
-          {/* Search bar */}
-          <div
-            style={{
-              flex: 1,
-              background: 'rgba(255,255,255,0.06)',
-              borderRadius: 5,
-              padding: '3px 6px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-            }}
-          >
-            <Search size={9} style={{ color: 'rgba(255,255,255,0.5)' }} />
-            <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.5)' }}>Search</span>
-          </div>
-          {/* Messages icon with badge */}
-          <div style={{ position: 'relative', flexShrink: 0 }}>
-            <MessageCircle size={13} style={{ color: 'rgba(255,255,255,0.85)' }} />
-            <span
-              style={{
-                position: 'absolute',
-                top: -3,
-                right: -3,
-                background: '#E0322B',
-                color: '#fff',
-                fontSize: 6,
-                fontWeight: 800,
-                width: 9,
-                height: 9,
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                lineHeight: 1,
-              }}
-            >
-              3
-            </span>
-          </div>
-        </div>
 
         {/* Cover banner */}
         <div
