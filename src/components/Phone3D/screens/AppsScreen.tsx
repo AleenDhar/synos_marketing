@@ -193,7 +193,7 @@ export default function AppsScreen() {
             >
               No apps match
               <div style={{ fontSize: 10, fontWeight: 700, color: '#fff', marginTop: 2 }}>
-                "{query}"
+                &ldquo;{query}&rdquo;
               </div>
             </div>
           ) : (

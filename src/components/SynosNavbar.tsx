@@ -49,11 +49,9 @@ export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => 
             />
           </Link>
           <ul className="synos-nav-links">
-            <li><a href="/#product">PRODUCT</a></li>
-            <li><a href="/#templates">AGENTS</a></li>
+            <li><Link href="/#product">PRODUCT</Link></li>
+            <li><Link href="/#agent-templates">AGENTS</Link></li>
             <li><Link href="/blog">BLOG</Link></li>
-            <li><a href="/#pricing">PRICING</a></li>
-            <li><a href="/#enterprise">COMPANY</a></li>
           </ul>
         </div>
         <div className="synos-nav-right">

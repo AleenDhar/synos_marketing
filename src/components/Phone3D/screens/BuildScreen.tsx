@@ -422,13 +422,13 @@ export default function BuildScreen() {
             <Token color="#FF7B72">import</Token>{' '}
             <Token color="#C9D1D9">{'{ KPI, BarChart }'}</Token>{' '}
             <Token color="#FF7B72">from</Token>{' '}
-            <Token color="#A5D6FF">'./ui'</Token>;
+            <Token color="#A5D6FF">{`'./ui'`}</Token>;
           </CodeLine>
           <CodeLine>
             <Token color="#FF7B72">import</Token>{' '}
             <Token color="#C9D1D9">{'{ supabase }'}</Token>{' '}
             <Token color="#FF7B72">from</Token>{' '}
-            <Token color="#A5D6FF">'./db'</Token>;
+            <Token color="#A5D6FF">{`'./db'`}</Token>;
           </CodeLine>
           <CodeLine />
           <CodeLine>
@@ -440,7 +440,7 @@ export default function BuildScreen() {
             <Token color="#79C0FF">stats</Token> ={' '}
             <Token color="#FF7B72">await</Token>{' '}
             <Token color="#79C0FF">supabase</Token>.<Token color="#D2A8FF">rpc</Token>(
-            <Token color="#A5D6FF">'sales_kpis'</Token>);
+            <Token color="#A5D6FF">{`'sales_kpis'`}</Token>);
           </CodeLine>
           <CodeLine />
           <CodeLine indent={1}>

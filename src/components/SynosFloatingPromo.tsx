@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import './SynosFloatingPromo.css';
 
 /**
@@ -9,7 +10,7 @@ import './SynosFloatingPromo.css';
  */
 export const SynosFloatingPromo: React.FC = () => {
   return (
-    <a
+    <Link
       className="synos-promo"
       href="/blog/product-hunt-launch"
       aria-label="Read: we're launching on Product Hunt soon"
@@ -42,6 +43,6 @@ export const SynosFloatingPromo: React.FC = () => {
         </p>
       </div>
       <span className="synos-promo-cta">READ</span>
-    </a>
+    </Link>
   );
 };

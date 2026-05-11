@@ -818,21 +818,109 @@
   }
 }
 
-/* Mobile — shrink the rail */
+/* ────────────────────────────────────────────────────────────
+   #product responsive — under 768px the absolute-positioned
+   pieces (phone, rail, kanji, anchor, right info) overlap heavily.
+   On phones we stack everything vertically.
+   ──────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
-  .synos-apps-rail {
-    left: 12px;
-    gap: 8px;
-    padding: 10px 8px;
+  /* Section becomes natural height — stack everything */
+  #product .synos-apps-section,
+  #product.synos-apps-section {
+    min-height: auto;
+    height: auto;
   }
-  .synos-apps-rail-arrow,
-  .synos-apps-rail-avatar {
-    width: 40px;
-    height: 40px;
-    font-size: 13px;
+  #product .synos-apps-inner {
+    position: relative;
+    padding: 96px 20px 48px;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
-  .synos-apps-rail-list {
+
+  /* Hide decorative side kanji on mobile (no room) */
+  .synos-apps-side-left {
+    display: none;
+  }
+
+  /* Vertical rail → horizontal pill at the top */
+  #product .synos-apps-rail {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    align-self: center;
+  }
+  #product .synos-apps-rail-list {
+    flex-direction: row;
     gap: 8px;
+  }
+  #product .synos-apps-rail-arrow,
+  #product .synos-apps-rail-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+  /* Trim the active-circle outer halo so the row stays tight */
+  #product .synos-apps-rail-avatar.is-active::after {
+    inset: -4px;
+  }
+
+  /* Phone — now a normal flex item, full-width, centered */
+  #product .synos-apps-phone {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1536 / 1024;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Anchor text — below the phone, centered */
+  #product .synos-apps-anchor,
+  .synos-apps-anchor {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+  }
+  .synos-apps-anchor-headline {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+  .synos-apps-anchor-sub {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  /* Right info / instructions — below the anchor */
+  #product .synos-apps-content-right,
+  .synos-apps-content-right {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    max-width: 100%;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+  }
+  .synos-apps-instructions {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
