@@ -1,11 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import './SynosLoadingScreen.css';
 
 interface SynosLoadingScreenProps {
-  /** Total counter duration in ms before fade-out begins (default 2400) */
+  /** Total counter duration in ms on initial page load (default 2400) */
   duration?: number;
+  /** Total counter duration on client-side route changes (default 900).
+   *  Shorter than the first load because assets are already cached. */
+  navDuration?: number;
   /** Fade-out duration in ms (default 600) */
   fadeOut?: number;
   /** Hold time at 100% before fading (default 350) */
@@ -14,14 +18,23 @@ interface SynosLoadingScreenProps {
 
 export const SynosLoadingScreen: React.FC<SynosLoadingScreenProps> = ({
   duration = 2400,
+  navDuration = 900,
   fadeOut = 600,
   holdAtFull = 350,
 }) => {
+  const pathname = usePathname();
+  const isFirstRunRef = useRef(true);
   const [percent, setPercent] = useState(0);
   const [visible, setVisible] = useState(true);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    // Reset state on every route change (including initial mount).
+    setPercent(0);
+    setVisible(true);
+    setFading(false);
+    const activeDuration = isFirstRunRef.current ? duration : navDuration;
+    isFirstRunRef.current = false;
     let cancelled = false;
     if (typeof document !== 'undefined') {
       document.body.style.overflow = 'hidden';
@@ -46,7 +59,7 @@ export const SynosLoadingScreen: React.FC<SynosLoadingScreenProps> = ({
 
     // ── 1. Counter (purely visual). Tries to reach 100 on its own. ─────────
     const stepMs = 30;
-    const totalSteps = Math.max(1, Math.round(duration / stepMs));
+    const totalSteps = Math.max(1, Math.round(activeDuration / stepMs));
     let step = 0;
     const interval = setInterval(() => {
       if (cancelled) return;
@@ -62,7 +75,7 @@ export const SynosLoadingScreen: React.FC<SynosLoadingScreenProps> = ({
       if (cancelled) return;
       setPercent(100);
       setFading(true);
-    }, duration + holdAtFull);
+    }, activeDuration + holdAtFull);
 
     const finalDismiss = setTimeout(() => {
       if (cancelled) return;
@@ -70,7 +83,7 @@ export const SynosLoadingScreen: React.FC<SynosLoadingScreenProps> = ({
       if (typeof document !== 'undefined') {
         document.body.style.overflow = '';
       }
-    }, duration + holdAtFull + fadeOut);
+    }, activeDuration + holdAtFull + fadeOut);
 
     return () => {
       cancelled = true;
@@ -81,7 +94,7 @@ export const SynosLoadingScreen: React.FC<SynosLoadingScreenProps> = ({
         document.body.style.overflow = '';
       }
     };
-  }, [duration, fadeOut, holdAtFull]);
+  }, [pathname, duration, navDuration, fadeOut, holdAtFull]);
 
   if (!visible) return null;
 
