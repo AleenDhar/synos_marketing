@@ -232,14 +232,9 @@ export const SynosAppsSection2: React.FC = () => {
         </motion.div>
 
         {/* Phone — original position, untouched */}
-        <motion.div
-          className="synos-apps-phone"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        >
+        <div className="synos-apps-phone">
           <PhoneShell activeScreen={activeKey} />
-        </motion.div>
+        </div>
 
         {/* Right side — user instructions for the current screen */}
         <motion.aside
