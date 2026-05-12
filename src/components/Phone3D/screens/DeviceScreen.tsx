@@ -50,6 +50,12 @@ export default function DeviceScreen() {
         icon={<Linkedin size={14} fill="#fff" strokeWidth={0} />}
         title="Request sent"
         subtitle="Aleen Dhar will be notified"
+        autoShow={{
+          title: 'Browser',
+          subtitle: 'Watch the agent use the web',
+          icon: <Globe size={13} style={{ color: '#fff' }} strokeWidth={2.2} />,
+          iconBg: 'linear-gradient(135deg, #0EA5E9 0%, #0C4A6E 100%)',
+        }}
       />
 
       {/* Title */}

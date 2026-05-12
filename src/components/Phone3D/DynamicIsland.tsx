@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -97,18 +97,24 @@ export default function DynamicIsland({
     }
   }, [show, controls]);
 
-  // autoShow: on mount, expand → hold → collapse.
+  // autoShow: fires ONCE per mount — expand → hold → collapse. Re-arms
+  // only when the component unmounts/remounts (i.e. when the tab is
+  // switched away and back). Snapshot via ref so callers can pass an
+  // inline object without retriggering on every render.
+  const autoShowRef = useRef(autoShow);
   useEffect(() => {
-    if (!autoShow) return;
-    const delay = autoShow.delay ?? 400;
-    const duration = autoShow.duration ?? 4000;
+    const cfg = autoShowRef.current;
+    if (!cfg) return;
+    const delay = cfg.delay ?? 400;
+    const duration = cfg.duration ?? 4000;
     const openT = setTimeout(() => setAutoShowing(true), delay);
     const closeT = setTimeout(() => setAutoShowing(false), delay + duration);
     return () => {
       clearTimeout(openT);
       clearTimeout(closeT);
     };
-  }, [autoShow]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div

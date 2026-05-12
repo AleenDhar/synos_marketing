@@ -52,6 +52,12 @@ export default function BuildScreen() {
         icon={<Sparkles size={14} style={{ color: '#fff' }} />}
         title="Synos"
         subtitle="Join the waitlist"
+        autoShow={{
+          title: 'Build',
+          subtitle: 'Tap Deploy to ship the app',
+          icon: <Rocket size={13} style={{ color: '#fff' }} strokeWidth={2.2} />,
+          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+        }}
       />
 
       {/* App preview header */}

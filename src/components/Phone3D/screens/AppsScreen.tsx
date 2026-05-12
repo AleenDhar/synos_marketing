@@ -91,6 +91,12 @@ export default function AppsScreen() {
       <DynamicIsland
         show={!!activeApp}
         onDismiss={() => setActiveApp(null)}
+        autoShow={{
+          title: 'App Store',
+          subtitle: 'Search for an app to connect',
+          icon: <Search size={13} style={{ color: '#fff' }} strokeWidth={2.5} />,
+          iconBg: 'linear-gradient(135deg, #2563EB 0%, #0E1F4D 100%)',
+        }}
         iconBg="#fff"
         icon={
           activeApp ? (
