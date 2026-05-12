@@ -978,34 +978,23 @@
   }
 }
 
-/* Medium / tablet band — between phones and desktop. The frame is
-   intentionally wider than the viewport so the hand image acts as a
-   cover-style crop (.synos-apps-phone has overflow hidden via the
-   section). Sized in vw so it stays predictable on tall iPad viewports
-   where vh-based widths would blow up. */
-@media (min-width: 600px) and (max-width: 1024px) and (orientation: landscape) {
-  /* Landscape tablet (e.g. iPad Mini 1024×768). */
+/* Medium screens (tablet portrait + landscape iPads, 600–1024px).
+   The pure-vh sizing used on phones overflows the section on iPads,
+   especially in landscape where viewport-height is small. Constrain by
+   BOTH dimensions with min() so the frame stays inside the viewport
+   regardless of orientation:
+     - iPad Mini landscape (1024×768) → ~998×665 frame
+     - iPad Air portrait   (820×1180) → ~902×601 frame
+     - iPad Pro  portrait  (1024×1366)→ ~1126×750 frame
+   aspect-ratio keeps the hand image proportional. */
+@media (min-width: 600px) and (max-width: 1024px) {
   #product .phone-shell-frame {
-    width: 135vw;
+    width: min(110vw, 130vh);
     height: auto;
-    aspect-ratio: 1536 / 1024;
     max-width: none;
     max-height: none;
-    transform: translateY(10vh);
-  }
-}
-
-@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
-  /* Portrait tablet (e.g. iPad Air 820×1180, iPad Pro 1024×1366). The
-     phone screen UI needs to feel substantial against the tall viewport,
-     so the frame is sized generously and overflows on the sides. */
-  #product .phone-shell-frame {
-    width: 200vw;
-    height: auto;
     aspect-ratio: 1536 / 1024;
-    max-width: none;
-    max-height: none;
-    transform: translateY(0);
+    transform: translateY(6vh);
   }
 }
 
