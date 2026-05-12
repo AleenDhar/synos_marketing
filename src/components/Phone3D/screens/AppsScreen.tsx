@@ -94,8 +94,14 @@ export default function AppsScreen() {
         autoShow={{
           title: 'Synos',
           subtitle: 'Search for an app to connect',
-          icon: <Search size={13} style={{ color: '#fff' }} strokeWidth={2.5} />,
-          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+          icon: (
+            <img
+              src="/Gate-logo.png"
+              alt=""
+              style={{ width: '80%', height: '80%', objectFit: 'contain' }}
+            />
+          ),
+          iconBg: '#000',
         }}
         iconBg="#fff"
         icon={
