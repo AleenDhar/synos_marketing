@@ -92,10 +92,10 @@ export default function AppsScreen() {
         show={!!activeApp}
         onDismiss={() => setActiveApp(null)}
         autoShow={{
-          title: 'App Store',
+          title: 'Synos',
           subtitle: 'Search for an app to connect',
           icon: <Search size={13} style={{ color: '#fff' }} strokeWidth={2.5} />,
-          iconBg: 'linear-gradient(135deg, #2563EB 0%, #0E1F4D 100%)',
+          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
         }}
         iconBg="#fff"
         icon={

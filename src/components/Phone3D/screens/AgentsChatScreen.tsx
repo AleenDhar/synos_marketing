@@ -161,8 +161,14 @@ export default function AgentsChatScreen() {
         autoShow={{
           title: 'Musashi',
           subtitle: 'Type a message to chat with your agent',
-          icon: <MessageSquare size={14} style={{ color: '#fff' }} />,
-          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+          icon: (
+            <img
+              src="/agents/00627030-d71d-4dc6-bef6-0d9e0dac1210.png"
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ),
+          iconBg: '#000',
         }}
       />
 
@@ -558,8 +564,14 @@ function TweakPage({ agent, onClose }: { agent: Agent; onClose: () => void }) {
         autoShow={{
           title: 'Musashi',
           subtitle: 'Type a message to chat with your agent',
-          icon: <MessageSquare size={14} style={{ color: '#fff' }} />,
-          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+          icon: (
+            <img
+              src="/agents/00627030-d71d-4dc6-bef6-0d9e0dac1210.png"
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ),
+          iconBg: '#000',
         }}
       />
 
