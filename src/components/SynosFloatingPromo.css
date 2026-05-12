@@ -50,24 +50,26 @@
   transform: scale(0.95);
 }
 
-/* Minimized bubble — small square fixed in the bottom-right corner */
+/* Minimized bubble — small circular logo fixed in the bottom-right corner */
 .synos-promo-bubble {
   position: fixed;
   right: clamp(12px, 2vw, 24px);
   bottom: clamp(12px, 2vw, 24px);
-  width: 52px;
-  height: 52px;
-  padding: 6px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border: none;
-  background: #ffffff;
+  border-radius: 50%;
+  background: transparent;
   cursor: pointer;
   z-index: 200;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 24px rgba(218, 85, 47, 0.45), 0 4px 10px rgba(0, 0, 0, 0.3);
   animation: synos-promo-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .synos-promo-bubble:hover,

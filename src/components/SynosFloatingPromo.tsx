@@ -1,17 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Minus } from 'lucide-react';
 import './SynosFloatingPromo.css';
 
+const MOBILE_BREAKPOINT = 640;
+
 /**
  * Persistent promo card that floats in the bottom-right of the viewport
- * across the entire site. On mobile, can be minimized to a small icon
- * square in the corner via the minimize button.
+ * across the entire site. Starts minimized on mobile (so it doesn't cover
+ * content) and expanded on desktop.
  */
 export const SynosFloatingPromo: React.FC = () => {
   const [minimized, setMinimized] = useState(false);
+
+  // On first mount, collapse to the bubble if we're on a mobile viewport.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches) {
+      setMinimized(true);
+    }
+  }, []);
 
   // Minimized state — small square in the bottom-right with just the PH logo.
   // Tapping the square restores the full card.
