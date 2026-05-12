@@ -1001,7 +1001,7 @@
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
   #product .phone-shell-frame {
     width: auto;
-    height: 80vh;
+    height: 95vh;
     aspect-ratio: 1536 / 1024;
     transform: translateY(4vh);
   }
