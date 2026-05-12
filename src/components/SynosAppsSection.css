@@ -979,16 +979,9 @@
 }
 
 /* Medium screens (tablet portrait + landscape iPads, 600–1024px).
-   Constrain by BOTH dimensions with min() so the frame stays bounded.
-   The vw cap is the looser one (150vw) so portraits get a properly
-   sized phone — the hand bleeds off the sides like on desktop. The vh
-   cap (130vh) is the tighter one on landscape iPads, keeping the phone
-   inside the short viewport.
-     - iPad Mini portrait  (768×1024) → ~1152×768   (vw-limited)
-     - iPad Air  portrait  (820×1180) → ~1230×820   (vw-limited)
-     - iPad Pro  portrait  (1024×1366)→ ~1536×1024  (vw-limited)
-     - iPad Mini landscape (1024×768) → ~998×665    (vh-limited)
-     - iPad Air  landscape (1180×820) → ~1066×711   (vh-limited) */
+   Landscape iPads — vh cap dominates and gives a properly sized phone:
+     - iPad Mini landscape (1024×768) → ~998×665    (130vh-limited)
+     - iPad Air  landscape (1180×820) → ~1066×711   (130vh-limited) */
 @media (min-width: 600px) and (max-width: 1024px) {
   #product .phone-shell-frame {
     width: min(150vw, 130vh);
@@ -997,6 +990,19 @@
     max-height: none;
     aspect-ratio: 1536 / 1024;
     transform: translateY(6vh);
+  }
+}
+
+/* Portrait iPads — viewport is tall and narrow, so the vw cap dominates.
+   Bump it so the phone fills more of the screen (the hand naturally bleeds
+   off the sides, same as the desktop design).
+     - iPad Mini portrait  (768×1024) → ~1382×921   (180vw-limited)
+     - iPad Air  portrait  (820×1180) → ~1476×984   (180vw-limited)
+     - iPad Pro  portrait  (1024×1366)→ ~1843×1229  (180vw-limited) */
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  #product .phone-shell-frame {
+    width: min(180vw, 145vh);
+    transform: translateY(4vh);
   }
 }
 
