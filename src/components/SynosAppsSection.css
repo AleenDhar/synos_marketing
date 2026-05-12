@@ -979,17 +979,19 @@
 }
 
 /* Medium screens (tablet portrait + landscape iPads, 600–1024px).
-   The pure-vh sizing used on phones overflows the section on iPads,
-   especially in landscape where viewport-height is small. Constrain by
-   BOTH dimensions with min() so the frame stays inside the viewport
-   regardless of orientation:
-     - iPad Mini landscape (1024×768) → ~998×665 frame
-     - iPad Air portrait   (820×1180) → ~902×601 frame
-     - iPad Pro  portrait  (1024×1366)→ ~1126×750 frame
-   aspect-ratio keeps the hand image proportional. */
+   Constrain by BOTH dimensions with min() so the frame stays bounded.
+   The vw cap is the looser one (150vw) so portraits get a properly
+   sized phone — the hand bleeds off the sides like on desktop. The vh
+   cap (130vh) is the tighter one on landscape iPads, keeping the phone
+   inside the short viewport.
+     - iPad Mini portrait  (768×1024) → ~1152×768   (vw-limited)
+     - iPad Air  portrait  (820×1180) → ~1230×820   (vw-limited)
+     - iPad Pro  portrait  (1024×1366)→ ~1536×1024  (vw-limited)
+     - iPad Mini landscape (1024×768) → ~998×665    (vh-limited)
+     - iPad Air  landscape (1180×820) → ~1066×711   (vh-limited) */
 @media (min-width: 600px) and (max-width: 1024px) {
   #product .phone-shell-frame {
-    width: min(110vw, 130vh);
+    width: min(150vw, 130vh);
     height: auto;
     max-width: none;
     max-height: none;
