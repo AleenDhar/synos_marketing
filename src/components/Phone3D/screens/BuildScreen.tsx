@@ -53,10 +53,16 @@ export default function BuildScreen() {
         title="Synos"
         subtitle="Join the waitlist"
         autoShow={{
-          title: 'Build',
-          subtitle: 'Tap Deploy to ship the app',
-          icon: <Rocket size={13} style={{ color: '#fff' }} strokeWidth={2.2} />,
-          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+          title: 'Synos',
+          subtitle: 'Agents builds app for you',
+          icon: (
+            <img
+              src="/Gate-logo.png"
+              alt=""
+              style={{ width: '80%', height: '80%', objectFit: 'contain' }}
+            />
+          ),
+          iconBg: '#000',
         }}
       />
 
