@@ -17,7 +17,6 @@ const NATIVE_H = 485;
 
 interface PhoneShellProps {
   activeScreen?: PhoneScreen;
-  notifications?: string[];
 }
 
 interface Drop {
@@ -26,40 +25,15 @@ interface Drop {
   y: number;
 }
 
-interface Banner {
-  id: number;
-  text: string;
-  leaving: boolean;
-}
-
 const DROP_DURATION_MS = 1400;
 const DROP_SPAWN_MS = 450;
 const MAX_DROPS = 3;
 
-const SCREEN_TITLES: Record<PhoneScreen, string> = {
-  lock: 'SYNOS',
-  agents: 'MUSASHI',
-  slack: 'SLACK',
-  apps: 'APP STORE',
-  device: 'BROWSER',
-  build: 'BUILD',
-};
-
-const NOTIF_ENTER_AT_MS = 350;
-const NOTIF_STAGGER_MS = 1200;
-const NOTIF_VISIBLE_MS = 3800;
-const NOTIF_EXIT_MS = 320;
-
-const PhoneShell: React.FC<PhoneShellProps> = ({
-  activeScreen = 'lock',
-  notifications,
-}) => {
+const PhoneShell: React.FC<PhoneShellProps> = ({ activeScreen = 'lock' }) => {
   const areaRef = useRef<HTMLDivElement>(null);
   const [scaleX, setScaleX] = useState(0);
   const [scaleY, setScaleY] = useState(0);
   const [drops, setDrops] = useState<Drop[]>([]);
-  const [banners, setBanners] = useState<Banner[]>([]);
-  const banIdRef = useRef(0);
 
   // Measure the screen-area's actual rendered size and compute scale
   // factors for each axis so height can be tuned independently of width.
@@ -111,36 +85,6 @@ const PhoneShell: React.FC<PhoneShellProps> = ({
     };
   }, []);
 
-  // Notification banners: each time the active screen changes, spawn the
-  // screen's instructions as iOS-style banner cards staggered in.
-  useEffect(() => {
-    setBanners([]);
-    if (!notifications || notifications.length === 0) return;
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    notifications.forEach((text, idx) => {
-      const enterAt = NOTIF_ENTER_AT_MS + idx * NOTIF_STAGGER_MS;
-      timers.push(
-        setTimeout(() => {
-          const id = ++banIdRef.current;
-          setBanners((prev) => [...prev, { id, text, leaving: false }]);
-          timers.push(
-            setTimeout(() => {
-              setBanners((prev) =>
-                prev.map((b) => (b.id === id ? { ...b, leaving: true } : b)),
-              );
-              timers.push(
-                setTimeout(() => {
-                  setBanners((prev) => prev.filter((b) => b.id !== id));
-                }, NOTIF_EXIT_MS),
-              );
-            }, NOTIF_VISIBLE_MS),
-          );
-        }, enterAt),
-      );
-    });
-    return () => timers.forEach(clearTimeout);
-  }, [activeScreen, notifications]);
-
   const renderScreen = () => {
     switch (activeScreen) {
       case 'agents':
@@ -183,27 +127,6 @@ const PhoneShell: React.FC<PhoneShellProps> = ({
             }}
           >
             {renderScreen()}
-
-            {/* iOS-style notification banners — overlay the active screen */}
-            <div className="phone-shell-notifications" aria-hidden="true">
-              {banners.map((b) => (
-                <div
-                  key={b.id}
-                  className={`phone-shell-notification ${b.leaving ? 'is-leaving' : ''}`}
-                >
-                  <div className="phone-shell-notification-icon">S</div>
-                  <div className="phone-shell-notification-body">
-                    <div className="phone-shell-notification-head">
-                      <span className="phone-shell-notification-app">
-                        {SCREEN_TITLES[activeScreen]}
-                      </span>
-                      <span className="phone-shell-notification-time">now</span>
-                    </div>
-                    <div className="phone-shell-notification-text">{b.text}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Water drops — JS-spawned at random positions, max 3 at a time. */}

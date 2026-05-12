@@ -25,7 +25,14 @@ export default function SlackScreen() {
       }}
     >
       {/* Unified status bar — same as every other screen */}
-      <DynamicIsland />
+      <DynamicIsland
+        autoShow={{
+          title: 'Slack',
+          subtitle: 'Send a message in #sales-leads',
+          icon: <Hash size={13} style={{ color: '#fff' }} strokeWidth={2.5} />,
+          iconBg: 'linear-gradient(135deg, #4A154B 0%, #350D36 100%)',
+        }}
+      />
 
       {/* Slack header — workspace icon + channel name */}
       <div

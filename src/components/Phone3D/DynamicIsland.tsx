@@ -17,6 +17,17 @@ type DynamicIslandProps = {
   iconBg?: string;
   title?: string;
   subtitle?: string;
+  /** When set, auto-fires on mount: expands to notification, holds, collapses. */
+  autoShow?: {
+    title: string;
+    subtitle: string;
+    icon?: React.ReactNode;
+    iconBg?: string;
+    /** Delay before expanding (ms). Default 400. */
+    delay?: number;
+    /** How long the expanded notification stays visible (ms). Default 4000. */
+    duration?: number;
+  };
 };
 
 const dIVariants = {
@@ -37,15 +48,31 @@ const notiContent = {
 };
 
 export default function DynamicIsland({
-  show = false,
-  onDismiss = () => {},
-  icon,
-  iconBg = '#fff',
-  title = '',
-  subtitle = '',
+  show: showProp,
+  onDismiss,
+  icon: iconProp,
+  iconBg: iconBgProp = '#fff',
+  title: titleProp = '',
+  subtitle: subtitleProp = '',
+  autoShow,
 }: DynamicIslandProps) {
   const controls = useAnimation();
   const [time, setTime] = useState<string>('');
+  const [autoShowing, setAutoShowing] = useState(false);
+
+  // Parent-driven `show` always wins over autoShow so existing screens
+  // that already drive the notch from interaction state aren't clobbered.
+  const useAuto = !showProp && !!autoShow && autoShowing;
+  const show = !!showProp || useAuto;
+  const title = useAuto ? autoShow!.title : titleProp;
+  const subtitle = useAuto ? autoShow!.subtitle : subtitleProp;
+  const icon = useAuto ? (autoShow!.icon ?? iconProp) : iconProp;
+  const iconBg = useAuto ? (autoShow!.iconBg ?? iconBgProp) : iconBgProp;
+
+  const handleDismiss = () => {
+    if (autoShow) setAutoShowing(false);
+    onDismiss?.();
+  };
 
   useEffect(() => {
     const update = () => {
@@ -69,6 +96,19 @@ export default function DynamicIsland({
       controls.start('initialDi');
     }
   }, [show, controls]);
+
+  // autoShow: on mount, expand → hold → collapse.
+  useEffect(() => {
+    if (!autoShow) return;
+    const delay = autoShow.delay ?? 400;
+    const duration = autoShow.duration ?? 4000;
+    const openT = setTimeout(() => setAutoShowing(true), delay);
+    const closeT = setTimeout(() => setAutoShowing(false), delay + duration);
+    return () => {
+      clearTimeout(openT);
+      clearTimeout(closeT);
+    };
+  }, [autoShow]);
 
   return (
     <div
@@ -109,7 +149,7 @@ export default function DynamicIsland({
         variants={dIVariants}
         animate={controls}
         transition={{ duration: 0.3, type: 'tween', ease: [0.14, 0.13, 0.25, 1] }}
-        onClick={() => show && onDismiss()}
+        onClick={() => show && handleDismiss()}
         style={{
           background: '#000',
           display: 'flex',
@@ -190,7 +230,7 @@ export default function DynamicIsland({
                   style={{ color: '#fff', cursor: 'pointer', flexShrink: 0 }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    onDismiss();
+                    handleDismiss();
                   }}
                 />
               </div>

@@ -233,7 +233,7 @@ export const SynosAppsSection2: React.FC = () => {
 
         {/* Phone — original position, untouched */}
         <div className="synos-apps-phone">
-          <PhoneShell activeScreen={activeKey} notifications={active.instructions} />
+          <PhoneShell activeScreen={activeKey} />
         </div>
 
         {/* Right side — user instructions for the current screen */}

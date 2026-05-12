@@ -157,7 +157,14 @@ export default function AgentsChatScreen() {
       }}
     >
       {/* Unified status bar — same as every other screen */}
-      <DynamicIsland />
+      <DynamicIsland
+        autoShow={{
+          title: 'Musashi',
+          subtitle: 'Type a message to chat with your agent',
+          icon: <MessageSquare size={14} style={{ color: '#fff' }} />,
+          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+        }}
+      />
 
       {/* Inline scrollbar — same look as the lockscreen About panel.
           Injected as a <style> tag so it always applies inside drei's <Html>. */}
@@ -547,7 +554,14 @@ function TweakPage({ agent, onClose }: { agent: Agent; onClose: () => void }) {
       }}
     >
       {/* Unified status bar */}
-      <DynamicIsland />
+      <DynamicIsland
+        autoShow={{
+          title: 'Musashi',
+          subtitle: 'Type a message to chat with your agent',
+          icon: <MessageSquare size={14} style={{ color: '#fff' }} />,
+          iconBg: 'linear-gradient(135deg, #E63D3D 0%, #7a0e0e 100%)',
+        }}
+      />
 
       {/* Top bar */}
       <div
