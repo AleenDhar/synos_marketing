@@ -993,15 +993,16 @@
   }
 }
 
-/* Portrait iPads — viewport is tall and narrow, so the vw cap dominates.
-   Bump it so the phone fills more of the screen (the hand naturally bleeds
-   off the sides, same as the desktop design).
-     - iPad Mini portrait  (768×1024) → ~1382×921   (180vw-limited)
-     - iPad Air  portrait  (820×1180) → ~1476×984   (180vw-limited)
-     - iPad Pro  portrait  (1024×1366)→ ~1843×1229  (180vw-limited) */
+/* Portrait iPads — size on viewport HEIGHT (vh) because the viewport is
+   tall; the hand naturally bleeds off the sides like on desktop.
+     - iPad Mini portrait  (768×1024) → ~1229×819   (height: 80vh)
+     - iPad Air  portrait  (820×1180) → ~1416×944
+     - iPad Pro  portrait  (1024×1366)→ ~1639×1093 */
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
   #product .phone-shell-frame {
-    width: min(180vw, 145vh);
+    width: auto;
+    height: 80vh;
+    aspect-ratio: 1536 / 1024;
     transform: translateY(4vh);
   }
 }
