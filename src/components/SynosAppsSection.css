@@ -978,14 +978,31 @@
   }
 }
 
-/* Medium screens (tablet portrait, iPad) — bump the phone+hand size so it
-   doesn't look tiny against the taller viewport. Overrides the mobile
-   frame size above for the 600–1024px band. */
+/* Medium / tablet band — between phones and desktop. The previous
+   240vh × 150vh sizing worked on short-portrait mobiles, but on tall
+   portrait iPads (e.g. iPad Air 820×1180) 240vh = 2832px — almost 3× the
+   viewport width — so the phone overflowed wildly. Cap the frame width
+   at 105vw so the hand always fits horizontally; height follows the
+   1536/1024 aspect ratio. */
 @media (min-width: 600px) and (max-width: 1024px) {
   #product .phone-shell-frame {
-    width: 240vh;
-    height: 150vh;
-    transform: translateY(20vh);
+    width: min(240vh, 105vw);
+    height: auto;
+    aspect-ratio: 1536 / 1024;
+    max-width: 105vw;
+    max-height: 100vh;
+    transform: translateY(15vh);
+  }
+}
+
+/* Portrait tablets (iPad Mini/Air/Pro in portrait) — viewport is taller
+   than wide, so vh-based widths blow up. Pin the frame to viewport width
+   so the phone sits centered without overflowing. */
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  #product .phone-shell-frame {
+    width: 115vw;
+    max-width: 115vw;
+    transform: translateY(8vh);
   }
 }
 
