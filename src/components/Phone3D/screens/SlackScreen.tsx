@@ -29,8 +29,14 @@ export default function SlackScreen() {
         autoShow={{
           title: 'Slack',
           subtitle: 'Send a message in #sales-leads',
-          icon: <Hash size={13} style={{ color: '#fff' }} strokeWidth={2.5} />,
-          iconBg: 'linear-gradient(135deg, #4A154B 0%, #350D36 100%)',
+          icon: (
+            <img
+              src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg"
+              alt=""
+              style={{ width: '70%', height: '70%', objectFit: 'contain' }}
+            />
+          ),
+          iconBg: '#fff',
         }}
       />
 
