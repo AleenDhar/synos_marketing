@@ -20,5 +20,9 @@
       "WebSearch",
       "WebFetch(domain:avatars.githubusercontent.com)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "supabase"
+  ],
+  "enableAllProjectMcpServers": true
 }
