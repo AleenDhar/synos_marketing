@@ -3,19 +3,13 @@
 import { useState } from 'react';
 import { SynosNavbar } from '@/components/SynosNavbar';
 import { SynosHero } from '@/components/SynosHero';
-import { SynosAppsSection } from '@/components/SynosAppsSection';
 import { SynosAppsSection2 } from '@/components/SynosAppsSection2';
-import { SynosHowItWorks } from '@/components/SynosHowItWorks';
-import { SynosChatPreview } from '@/components/SynosChatPreview';
-import { SynosFeatureGrid } from '@/components/SynosFeatureGrid';
 import { SynosComparison } from '@/components/SynosComparison';
-import { SynosTemplates } from '@/components/SynosTemplates';
 import { SynosAgentTemplates } from '@/components/SynosAgentTemplates';
 import { SynosBlogSection } from '@/components/SynosBlogSection';
 import { SynosWaitlistCTA } from '@/components/SynosWaitlistCTA';
-import { SynosEnterprise } from '@/components/SynosEnterprise';
-import { SynosPricing } from '@/components/SynosPricing';
 import { SynosFinalCTA } from '@/components/SynosFinalCTA';
+import { SynosProofStrip } from '@/components/SynosProofStrip';
 import { SynosFooter } from '@/components/SynosFooter';
 import { SynosWaitlistModal } from '@/components/SynosWaitlistModal';
 import { SynosTracker } from '@/components/SynosTracker';
@@ -30,21 +24,13 @@ export default function LandingPage() {
       <SynosNavbar onWaitlistClick={openWaitlist} />
       <main className="synos-snap-container">
         <SynosHero onWaitlistClick={openWaitlist} onDemoClick={openDemo} />
-        {/* <SynosAppsSection /> */}
+        <SynosProofStrip />
         <SynosAppsSection2 />
         <SynosAgentTemplates />
+        <SynosComparison />
         <SynosBlogSection />
         <SynosWaitlistCTA onWaitlistClick={openWaitlist} />
-        {/* Sections below commented out — re-enable as needed.
-        <SynosHowItWorks onWaitlistClick={openWaitlist} />
-        <SynosChatPreview />
-        <SynosFeatureGrid />
-        <SynosComparison />
-        <SynosTemplates onDemoClick={openDemo} />
-        <SynosEnterprise onDemoClick={openDemo} />
-        <SynosPricing onWaitlistClick={openWaitlist} />
         <SynosFinalCTA onWaitlistClick={openWaitlist} onDemoClick={openDemo} />
-        */}
       </main>
       <SynosFooter />
       <SynosWaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />

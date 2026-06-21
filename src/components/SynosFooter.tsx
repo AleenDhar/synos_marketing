@@ -85,9 +85,9 @@ export const SynosFooter: React.FC = () => {
               <span className="synos-footer-logo-text">SYNOS</span>
             </Link>
             <p className="synos-footer-pitch">
-              Hire AI agents that work like real employees. Across Slack, your
-              CRM, your codebase, your inbox — autonomously, with full audit
-              trails.
+              One person, an entire operation. AI employees that research, sell,
+              support, and build — so solo founders and small teams can compete
+              with companies 100× their size.
             </p>
             <span className="synos-footer-kanji" aria-hidden="true">
               未来を、仕組みに。

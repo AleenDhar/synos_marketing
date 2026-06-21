@@ -74,7 +74,7 @@ export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => 
               <span className="synos-nav-cta-corner synos-nav-cta-corner-bl" />
               <span className="synos-nav-cta-corner synos-nav-cta-corner-br" />
             </span>
-            <span className="synos-nav-cta-label">START HIRING</span>
+            <span className="synos-nav-cta-label">JOIN WAITLIST</span>
           </button>
 
           {/* Hamburger — visible on mobile only */}
@@ -109,7 +109,7 @@ export const SynosNavbar: React.FC<SynosNavbarProps> = ({ onWaitlistClick }) => 
             onWaitlistClick();
           }}
         >
-          START HIRING
+          JOIN WAITLIST
         </button>
 
         <div className="synos-nav-mobile-footer">

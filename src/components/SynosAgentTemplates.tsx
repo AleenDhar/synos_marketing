@@ -29,11 +29,12 @@ export const SynosAgentTemplates: React.FC = () => {
     <section className="synos-agents" id="agent-templates" data-navbar-theme="light">
       <div className="synos-container">
         <div className="synos-agents-header">
-          <span className="synos-agents-eyebrow">Agent Templates</span>
-          <h2 className="synos-agents-title">Hire your starting roster.</h2>
+          <span className="synos-agents-eyebrow">Your AI Team</span>
+          <h2 className="synos-agents-title">An entire department. Ready in minutes.</h2>
           <p className="synos-agents-subtitle">
-            Pre-built agents you can drop into Slack, your CRM, or your inbox in
-            minutes. Tweak their tools, tone, and tier whenever you like.
+            Sales, support, ops, marketing, recruiting — each agent is a
+            specialist that plugs into your stack and starts delivering
+            results from day one. No onboarding. No salary. No limits.
           </p>
         </div>
 

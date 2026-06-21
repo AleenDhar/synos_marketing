@@ -1,0 +1,55 @@
+.synos-proof-strip {
+  background: #1a1a1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 32px 24px;
+  scroll-snap-align: none !important;
+  min-height: auto !important;
+}
+
+.synos-proof-strip-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.synos-proof-strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.synos-proof-strip-value {
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #f04e23;
+  letter-spacing: -0.5px;
+}
+
+.synos-proof-strip-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 600px) {
+  .synos-proof-strip-inner {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .synos-proof-strip-item {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .synos-proof-strip-value {
+    font-size: 22px;
+  }
+}

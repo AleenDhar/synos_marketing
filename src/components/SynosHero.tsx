@@ -52,13 +52,14 @@ export const SynosHero: React.FC<SynosHeroProps> = ({ onWaitlistClick, onDemoCli
         {/* Left content block — headline, sub, CTAs */}
         <div className="synos-hero-content">
           <h1 className="synos-hero-headline">
-            AI AGENTS THAT
+            ONE PERSON.
             <br />
-            WORK LIKE <span className="synos-hero-headline-accent">YOU</span> DO.
+            AN ENTIRE <span className="synos-hero-headline-accent">OPERATION</span>.
           </h1>
           <p className="synos-hero-sub">
-            SYNOS builds autonomous AI agents that execute, adapt, and scale —
-            so you can focus on what matters.
+            Solo founders and small teams are quietly building real businesses
+            with AI employees. No traditional team. No enterprise budget. Just
+            you and Synos.
           </p>
 
           <div className="synos-hero-actions">
@@ -73,7 +74,7 @@ export const SynosHero: React.FC<SynosHeroProps> = ({ onWaitlistClick, onDemoCli
                 <span className="synos-hero-cta-corner synos-hero-cta-corner-bl" />
                 <span className="synos-hero-cta-corner synos-hero-cta-corner-br" />
               </span>
-              <span className="synos-hero-cta-label">START BUILDING</span>
+              <span className="synos-hero-cta-label">JOIN THE WAITLIST</span>
               <ArrowUpRight size={16} className="synos-hero-cta-arrow" />
             </button>
             <button

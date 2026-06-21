@@ -44,9 +44,9 @@ export const SynosWaitlistCTA: React.FC<SynosWaitlistCTAProps> = ({ onWaitlistCl
         </h2>
 
         <p className="synos-cta-sub">
-          Synos is rolling out to a small batch of teams first. Drop your email
-          and we&apos;ll send the Product Hunt link 24 hours before launch — plus
-          your early-access invite when slots open.
+          We&apos;re onboarding a small group of founders and operators first —
+          the kind of people who build real businesses, not slide decks.
+          Drop your email for early access and launch-day priority.
         </p>
 
         <div className="synos-cta-actions">

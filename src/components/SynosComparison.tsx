@@ -23,7 +23,7 @@ export const SynosComparison: React.FC = () => {
       <div className="synos-container">
         <div className="synos-comparison-header">
           <h2 className="synos-comparison-title">Not another AI toy.</h2>
-          <p className="synos-comparison-subtitle">Others do one thing. Synos does everything — and actually executes.</p>
+          <p className="synos-comparison-subtitle">Chatbots answer questions. Synos runs your business.</p>
         </div>
         <div className="synos-comparison-table-wrap">
           <table className="synos-comparison-table">

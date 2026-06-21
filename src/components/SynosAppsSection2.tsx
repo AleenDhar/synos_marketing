@@ -216,7 +216,7 @@ export const SynosAppsSection2: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
         >
-          <span className="synos-apps-anchor-eyebrow">HOW SYNOS WORKS</span>
+          <span className="synos-apps-anchor-eyebrow">YOUR AI OPERATIONS CENTER</span>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeKey}
